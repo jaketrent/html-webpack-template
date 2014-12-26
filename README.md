@@ -1,6 +1,6 @@
 # HTML Webpack Template
 
-This is a template for the [webpack](http://webpack.github.io/) plugin [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin).  It has a few extra features than the [default template]() which will hopefully make it less likely that you'll have to create your own `index.html` file in your webpack project.
+This is a template for the [webpack](http://webpack.github.io/) plugin [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin).  It has a few extra features than the [default template](https://github.com/ampedandwired/html-webpack-plugin/blob/master/default_index.html) which will hopefully make it less likely that you'll have to create your own `index.html` file in your webpack project.
 
 Templates for the html-webpack-plugin are implemented using [blueimp templates](https://github.com/blueimp/JavaScript-Templates).  You can write your own as well.
 
@@ -21,7 +21,7 @@ Additional configuration options are as follows:
 - `filename`: The file to write the HTML to. Defaults to `index.html`.
    You can specify a subdirectory here too (eg: `assets/admin.html`).
 - `mobile`: Sets appropriate meta tags for page scaling.
-- `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](analytics.google.com).
+- `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
 - `title`: The title to use for the generated HTML document.
 
