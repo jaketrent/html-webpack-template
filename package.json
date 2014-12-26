@@ -1,0 +1,22 @@
+{
+  "name": "html-webpack-template",
+  "version": "1.0.0",
+  "description": "A template with more features than the default html-webpack-plugin template",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaketrent/html-webpack-template.git"
+  },
+  "keywords": [
+    "webpack",
+    "template",
+    "html-webpack-plugin",
+    "index.html"
+  ],
+  "author": "jaketrent",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jaketrent/html-webpack-template/issues"
+  },
+  "homepage": "https://github.com/jaketrent/html-webpack-template"
+}
