@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-template",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A template with more features than the default html-webpack-plugin template",
   "main": "index.html",
   "repository": {
