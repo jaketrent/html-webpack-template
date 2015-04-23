@@ -10,6 +10,10 @@
 
 </head>
 <body>
+{% if (o.htmlWebpackPlugin.options.appMountId) { %}
+<div id="{%=o.htmlWebpackPlugin.options.appMountId%}"></div>
+{% } %}
+
 {% for (var chunk in o.htmlWebpackPlugin.assets) { %}
 <script src="{%=o.htmlWebpackPlugin.assets[chunk]%}"></script>
 {% } %}
