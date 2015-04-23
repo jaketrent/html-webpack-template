@@ -36,7 +36,7 @@ Here's an example webpack config illustrating how to use these options in your `
       template: 'node_modules/html-webpack-template/index.html',
 
       title: 'My App',
-      filename 'assets/admin.html',
+      filename: 'assets/admin.html',
       mobile: true,
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
