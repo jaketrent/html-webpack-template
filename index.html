@@ -5,17 +5,20 @@
   <title>{%=o.htmlWebpackPlugin.options.title || 'Webpack App'%}</title>
 
   {% if (o.htmlWebpackPlugin.options.mobile) { %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   {% } %}
 
+  {% for (var css in o.htmlWebpackPlugin.files.css) { %}
+  <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
+  {% } %}
 </head>
 <body>
 {% if (o.htmlWebpackPlugin.options.appMountId) { %}
 <div id="{%=o.htmlWebpackPlugin.options.appMountId%}"></div>
 {% } %}
 
-{% for (var chunk in o.htmlWebpackPlugin.assets) { %}
-<script src="{%=o.htmlWebpackPlugin.assets[chunk]%}"></script>
+{% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+<script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
 {% } %}
 
 {% if (o.htmlWebpackPlugin.options.devServer) { %}
