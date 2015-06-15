@@ -26,6 +26,7 @@ Additional configuration options are as follows:
 - `title`: The title to use for the generated HTML document.
 - `devServer`: insert the webpack-dev-server hot reload script at this host:port/path (eg, http://localhost:3000)
 - `appMountId`: div element id on which you plan to mount a javascript app
+- `window`: object that defines data you need to bootstrap a javascript app
 
 Here's an example webpack config illustrating how to use these options in your `webpack.config.js`:
 
@@ -35,7 +36,6 @@ Here's an example webpack config illustrating how to use these options in your `
   plugins: [
     new HtmlWebpackPlugin({
       template: 'node_modules/html-webpack-template/index.html',
-
       title: 'My App',
       filename: 'assets/admin.html',
       mobile: true,
@@ -44,7 +44,12 @@ Here's an example webpack config illustrating how to use these options in your `
         pageViewOnLoad: true
       },
       devServer: 3000,
-      appMountId: 'app'
+      appMountId: 'app',
+      window: {
+        env: {
+          apiHost: 'http://myapi.com/api/v1'
+        }
+      }
     })
   ]
 }

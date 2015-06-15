@@ -17,6 +17,15 @@
 <div id="{%=o.htmlWebpackPlugin.options.appMountId%}"></div>
 {% } %}
 
+
+{% if (o.htmlWebpackPlugin.options.window) { %}
+<script>
+  {% for (var varName in o.htmlWebpackPlugin.options.window) { %}
+    window[varName] = o.htmlWebpackPlugin.options.window[varName];
+    {% } %}
+</script>
+{% } %}
+
 {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
 <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
 {% } %}
