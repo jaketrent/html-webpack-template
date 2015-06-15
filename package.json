@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-template",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A template with more features than the default html-webpack-plugin template",
   "main": "index.html",
   "repository": {
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/jaketrent/html-webpack-template/issues"
   },
-  "homepage": "https://github.com/jaketrent/html-webpack-template"
+  "homepage": "https://github.com/jaketrent/html-webpack-template",
+  "devDependencies": {
+    "rf-release": "^0.4.0"
+  }
 }
