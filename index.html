@@ -21,7 +21,7 @@
 {% if (o.htmlWebpackPlugin.options.window) { %}
 <script>
   {% for (var varName in o.htmlWebpackPlugin.options.window) { %}
-    window[varName] = o.htmlWebpackPlugin.options.window[varName];
+    window[{%=varName%}] = {%=o.htmlWebpackPlugin.options.window[varName]%};
     {% } %}
 </script>
 {% } %}
