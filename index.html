@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html{% if(o.htmlWebpackPlugin.files.manifest) { %} manifest="{%= o.htmlWebpackPlugin.files.manifest %}"{% } %}>
 <head>
   <meta charset="utf-8">
   <title>{%=o.htmlWebpackPlugin.options.title || 'Webpack App'%}</title>
 
+  {% if (o.htmlWebpackPlugin.files.favicon) { %}
+  <link rel="shortcut icon" href="{%=o.htmlWebpackPlugin.files.favicon%}">
+  {% } %}
   {% if (o.htmlWebpackPlugin.options.mobile) { %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% } %}
