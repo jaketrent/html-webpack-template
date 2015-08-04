@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html{% if(o.htmlWebpackPlugin.files.manifest) { %} manifest="{%= o.htmlWebpackPlugin.files.manifest %}"{% } %}>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6" {% if(o.htmlWebpackPlugin.files.manifest) { %} manifest="{%= o.htmlWebpackPlugin.files.manifest %}"{% } %}> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7" {% if(o.htmlWebpackPlugin.files.manifest) { %} manifest="{%= o.htmlWebpackPlugin.files.manifest %}"{% } %}> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8" {% if(o.htmlWebpackPlugin.files.manifest) { %} manifest="{%= o.htmlWebpackPlugin.files.manifest %}"{% } %}> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9" {% if(o.htmlWebpackPlugin.files.manifest) { %} manifest="{%= o.htmlWebpackPlugin.files.manifest %}"{% } %}> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="" {% if(o.htmlWebpackPlugin.files.manifest) { %} manifest="{%= o.htmlWebpackPlugin.files.manifest %}"{% } %}> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <title>{%=o.htmlWebpackPlugin.options.title || 'Webpack App'%}</title>
