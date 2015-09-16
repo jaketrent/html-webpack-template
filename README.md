@@ -25,7 +25,7 @@ Additional configuration options are as follows:
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
 - `title`: The title to use for the generated HTML document.
 - `devServer`: insert the webpack-dev-server hot reload script at this host:port/path (eg, http://localhost:3000)
-- `appMountId`: div element id on which you plan to mount a javascript app
+- `appMountId`: div element id on which you plan to mount a javascript app (can include multiple elements using the `appMountId` array)
 - `window`: object that defines data you need to bootstrap a javascript app
 
 Here's an example webpack config illustrating how to use these options in your `webpack.config.js`:

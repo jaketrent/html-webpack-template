@@ -34,6 +34,12 @@
 <div id="{%=o.htmlWebpackPlugin.options.appMountId%}"></div>
 {% } %}
 
+{% if (o.htmlWebpackPlugin.options.appMountIds && o.htmlWebpackPlugin.options.appMountIds.length > 0) { %}
+{% for (var appMountId in (o.htmlWebpackPlugin.options.appMountIds) { %}
+<div id="{%=appMountId%}"></div>
+{% } %}
+{% } %}
+
 {% if (o.htmlWebpackPlugin.options.window) { %}
 <script>
   {% for (var varName in o.htmlWebpackPlugin.options.window) { %}
