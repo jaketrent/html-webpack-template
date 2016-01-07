@@ -2,7 +2,7 @@
 
 This is a template for the [webpack](http://webpack.github.io/) plugin [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin).  It has a few extra features than the [default template](https://github.com/ampedandwired/html-webpack-plugin/blob/master/default_index.html) which will hopefully make it less likely that you'll have to create your own `index.html` file in your webpack project.
 
-Templates for the html-webpack-plugin are implemented using [blueimp templates](https://github.com/blueimp/JavaScript-Templates).  You can write your own as well.
+Templates for the html-webpack-plugin are implemented using [underscore templates](http://underscorejs.org/#template) (previously, in 2.x, [blueimp templates](https://github.com/blueimp/JavaScript-Templates)).  You can write your own as well.
 
 ## Installation
 
@@ -43,7 +43,7 @@ Here's an example webpack config illustrating how to use these options in your `
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
-      devServer: 3000,
+      devServer: 3001,
       appMountId: 'app',
       window: {
         env: {
