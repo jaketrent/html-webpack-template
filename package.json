@@ -1,8 +1,12 @@
 {
   "name": "html-webpack-template",
-  "version": "2.5.1",
   "description": "A template with more features than the default html-webpack-plugin template",
   "main": "index.html",
+  "scripts": {
+    "commit": "git-cz",
+    "test": "echo \"Everything is fine.  No tests here.\" && exit 0",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/jaketrent/html-webpack-template.git"
@@ -19,7 +23,14 @@
     "url": "https://github.com/jaketrent/html-webpack-template/issues"
   },
   "homepage": "https://github.com/jaketrent/html-webpack-template",
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
-    "rf-release": "^0.4.0"
+    "commitizen": "^2.4.6",
+    "cz-conventional-changelog": "^1.1.5",
+    "semantic-release": "^4.3.5"
   }
 }
