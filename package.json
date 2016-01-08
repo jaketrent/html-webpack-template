@@ -35,5 +35,8 @@
   },
   "peerDependencies": {
     "html-webpack-plugin": "2.x"
+  },
+  "publishConfig": {
+    "tag": "beta"
   }
 }

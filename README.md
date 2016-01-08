@@ -4,6 +4,10 @@ This is a template for the [webpack](http://webpack.github.io/) plugin [html-web
 
 Templates for the html-webpack-plugin are implemented using [underscore templates](http://underscorejs.org/#template) (previously, in 2.x, [blueimp templates](https://github.com/blueimp/JavaScript-Templates)).  You can write your own as well.
 
+#### Legacy version
+
+For the legacy version that works with `html-webpack-plugin@1.x`, `npm install html-webpack-plugin@2`.
+
 ## Installation
 
 Install the template in your project with npm:
