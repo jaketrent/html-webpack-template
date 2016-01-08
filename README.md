@@ -4,6 +4,10 @@ This is a template for the [webpack](http://webpack.github.io/) plugin [html-web
 
 Templates for the html-webpack-plugin are implemented using [blueimp templates](https://github.com/blueimp/JavaScript-Templates).  You can write your own as well.
 
+#### Beta version
+
+For the new version that works with `html-webpack-plugin@2.x`, `npm install html-webpack-plugin@3`.
+
 ## Installation
 
 Install the template in your project with npm:
