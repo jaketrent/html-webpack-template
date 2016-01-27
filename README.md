@@ -29,6 +29,7 @@ Additional configuration options are as follows:
 - `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
 - `title`: The title to use for the generated HTML document.
+- `baseHref`: Adjust the url for relative urls in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base))
 - `devServer`: insert the webpack-dev-server hot reload script at this host:port/path (eg, http://localhost:3000)
 - `appMountId`: div element id on which you plan to mount a javascript app (can include multiple elements using the `appMountId` array)
 - `window`: object that defines data you need to bootstrap a javascript app
@@ -43,6 +44,7 @@ Here's an example webpack config illustrating how to use these options in your `
       template: 'node_modules/html-webpack-template/index.html',
       title: 'My App',
       inject: false,
+      baseHref: 'http://example.com/awesome',
       filename: 'assets/admin.html',
       mobile: true,
       googleAnalytics: {

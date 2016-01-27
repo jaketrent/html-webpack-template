@@ -20,6 +20,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: '../index.html',
       title: 'My App',
+      baseHref: 'http://example.com/awesome',
       mobile: true,
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
