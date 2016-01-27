@@ -1,6 +1,5 @@
 {
   "name": "html-webpack-template",
-  "version": "3.0.2",
   "description": "A template with more features than the default html-webpack-plugin template",
   "main": "index.html",
   "scripts": {
@@ -36,8 +35,5 @@
   },
   "peerDependencies": {
     "html-webpack-plugin": "2.x"
-  },
-  "publishConfig": {
-    "tag": "beta"
   }
 }
