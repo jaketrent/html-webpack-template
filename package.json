@@ -2,7 +2,7 @@
   "name": "html-webpack-template",
   "version": "3.1.5",
   "description": "A template with more features than the default html-webpack-plugin template",
-  "main": "index.html",
+  "main": "index.ejs",
   "scripts": {
     "commit": "git-cz",
     "test": "echo \"Everything is fine.  No tests here.\" && exit 0",
@@ -16,7 +16,8 @@
     "webpack",
     "template",
     "html-webpack-plugin",
-    "index.html"
+    "index.html",
+    "index.ejs"
   ],
   "author": "jaketrent",
   "license": "MIT",

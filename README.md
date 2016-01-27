@@ -21,14 +21,14 @@ $ npm install html-webpack-template --save-dev
 There are a couple required parameters:
 
 - `inject`: Set to `false`.  Controls asset addition to the template.  This template takes care of that.
-- `template`: Specify this module's `index.html` file
+- `template`: Specify this module's `index.ejs` file
 
 And some other optional:
 
 - `appMountId`: div element id on which you plan to mount a javascript app (can include multiple elements using the `appMountId` array)
 - `devServer`: insert the webpack-dev-server hot reload script at this host:port/path (eg, http://localhost:3000)
 - `baseHref`: Adjust the url for relative urls in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base))
-- `filename`: The file to write the HTML to. Defaults to `index.html`.
+- `filename`: The file to write the HTML to. Defaults to `index.ejs`.
    You can specify a subdirectory here too (eg: `assets/admin.html`).
 - `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
@@ -48,7 +48,7 @@ Here's an example webpack config illustrating how to use these options in your `
     new HtmlWebpackPlugin({
       // Required
       inject: false,
-      template: 'node_modules/html-webpack-template/index.html',
+      template: 'node_modules/html-webpack-template/index.ejs',
 
       // Optional
       appMountId: 'app',

@@ -18,7 +18,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: '../index.html',
+      template: '../index.ejs',
       title: 'My App',
       baseHref: 'http://example.com/awesome',
       mobile: true,
