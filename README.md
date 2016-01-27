@@ -22,6 +22,7 @@ Once installed, you can reference the template in your `webpack.config.js` using
 
 Additional configuration options are as follows:
 
+- `inject`: Set to `false`.  Controls asset addition to the template.  This template takes care of that.  [More docs](https://github.com/ampedandwired/html-webpack-plugin#configuration)
 - `filename`: The file to write the HTML to. Defaults to `index.html`.
    You can specify a subdirectory here too (eg: `assets/admin.html`).
 - `mobile`: Sets appropriate meta tags for page scaling.
@@ -41,6 +42,7 @@ Here's an example webpack config illustrating how to use these options in your `
     new HtmlWebpackPlugin({
       template: 'node_modules/html-webpack-template/index.html',
       title: 'My App',
+      inject: false,
       filename: 'assets/admin.html',
       mobile: true,
       googleAnalytics: {
