@@ -18,21 +18,26 @@ $ npm install html-webpack-template --save-dev
 
 ## Basic Usage
 
-Once installed, you can reference the template in your `webpack.config.js` using the `template` option, passing the path to this module's `index.html` file.
+There are a couple required parameters:
 
-Additional configuration options are as follows:
+- `inject`: Set to `false`.  Controls asset addition to the template.  This template takes care of that.
+- `template`: Specify this module's `index.html` file
 
-- `inject`: Set to `false`.  Controls asset addition to the template.  This template takes care of that.  [More docs](https://github.com/ampedandwired/html-webpack-plugin#configuration)
+And some other optional:
+
+- `appMountId`: div element id on which you plan to mount a javascript app (can include multiple elements using the `appMountId` array)
+- `devServer`: insert the webpack-dev-server hot reload script at this host:port/path (eg, http://localhost:3000)
+- `baseHref`: Adjust the url for relative urls in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base))
 - `filename`: The file to write the HTML to. Defaults to `index.html`.
    You can specify a subdirectory here too (eg: `assets/admin.html`).
-- `mobile`: Sets appropriate meta tags for page scaling.
 - `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
+- `mobile`: Sets appropriate meta tags for page scaling.
 - `title`: The title to use for the generated HTML document.
-- `baseHref`: Adjust the url for relative urls in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base))
-- `devServer`: insert the webpack-dev-server hot reload script at this host:port/path (eg, http://localhost:3000)
-- `appMountId`: div element id on which you plan to mount a javascript app (can include multiple elements using the `appMountId` array)
 - `window`: object that defines data you need to bootstrap a javascript app
+
+
+Plus any [html-webpack-plugin config options](https://github.com/ampedandwired/html-webpack-plugin#configuration) otherwise available.
 
 Here's an example webpack config illustrating how to use these options in your `webpack.config.js`:
 
@@ -41,23 +46,27 @@ Here's an example webpack config illustrating how to use these options in your `
   // ...
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'node_modules/html-webpack-template/index.html',
-      title: 'My App',
+      // Required
       inject: false,
+      template: 'node_modules/html-webpack-template/index.html',
+
+      // Optional
+      appMountId: 'app',
       baseHref: 'http://example.com/awesome',
-      filename: 'assets/admin.html',
-      mobile: true,
+      devServer: 3001,
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
-      devServer: 3001,
-      appMountId: 'app',
+      mobile: true,
       window: {
         env: {
           apiHost: 'http://myapi.com/api/v1'
         }
       }
+
+      // and any other config options from html-webpack-plugin
+      // https://github.com/ampedandwired/html-webpack-plugin#configuration
     })
   ]
 }
