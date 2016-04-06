@@ -25,7 +25,7 @@ There are a couple required parameters:
 
 And some other optional:
 
-- `appMountId`: div element id on which you plan to mount a javascript app (can include multiple elements using the `appMountId` array)
+- `appMountId`: div element id on which you plan to mount a javascript app (can include multiple elements using the `appMountIds` array)
 - `devServer`: insert the webpack-dev-server hot reload script at this host:port/path (eg, http://localhost:3000)
 - `baseHref`: Adjust the url for relative urls in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base))
 - `filename`: The file to write the HTML to. Defaults to `index.ejs`.
