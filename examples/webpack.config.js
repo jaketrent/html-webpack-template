@@ -1,3 +1,4 @@
+var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -8,6 +9,7 @@ module.exports = {
     path: __dirname + '/dist',
     filename: 'main.js'
   },
+  resolveLoader: { root: path.join(__dirname, 'node_modules') },
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader' }
