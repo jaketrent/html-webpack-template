@@ -22,13 +22,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: '../index.ejs',
       title: 'My App',
-      baseHref: 'http://example.com/awesome',
       mobile: true,
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
-      devServer: 3000,
+      devServer: 'http://localhost:3001',
       appMountId: 'app',
       window: {
         env: {
