@@ -2,7 +2,7 @@
   "name": "html-webpack-template",
   "version": "4.0.0",
   "description": "A template with more features than the default html-webpack-plugin template",
-  "main": "index.js",
+  "main": "index.ejs",
   "scripts": {
     "commit": "git-cz",
     "test": "echo \"Everything is fine.  No tests here.\" && exit 0",
