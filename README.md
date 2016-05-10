@@ -48,7 +48,8 @@ Here's an example webpack config illustrating how to use these options in your `
     new HtmlWebpackPlugin({
       // Required
       inject: false,
-      template: 'node_modules/html-webpack-template/index.ejs',
+      template: require('html-webpack-template'),
+      //template: 'node_modules/html-webpack-template/index.ejs',
 
       // Optional
       appMountId: 'app',
