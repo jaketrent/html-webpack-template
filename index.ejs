@@ -6,6 +6,12 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="" <% if(htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <% if (htmlWebpackPlugin.options.meta) { %>
+  <% for (var key in htmlWebpackPlugin.options.meta) { %>
+  <meta name="<%= key %>" content="<%= htmlWebpackPlugin.options.meta[key] %>">
+  <% } %>
+  <% } %>
+
   <title><%= htmlWebpackPlugin.options.title || 'Webpack App'%></title>
 
   <% if (htmlWebpackPlugin.files.favicon) { %>
