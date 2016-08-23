@@ -32,10 +32,11 @@ And some other optional:
    You can specify a subdirectory here too (eg: `assets/admin.html`).
 - `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
+- `meta`: object that defines the meta tags
 - `mobile`: Sets appropriate meta tags for page scaling.
+- `scripts`: array of external script imports to include on page
 - `title`: The title to use for the generated HTML document.
 - `window`: object that defines data you need to bootstrap a javascript app
-- `meta`: object that defines the meta tags
 
 
 Plus any [html-webpack-plugin config options](https://github.com/ampedandwired/html-webpack-plugin#configuration) otherwise available.
@@ -64,6 +65,9 @@ Here's an example webpack config illustrating how to use these options in your `
         description: "a better default template for html-webpack-plugin"
       },
       mobile: true,
+      scripts: [
+        'http://somecool.com/script.js'
+      ],
       window: {
         env: {
           apiHost: 'http://myapi.com/api/v1'
