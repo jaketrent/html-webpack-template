@@ -30,6 +30,7 @@ module.exports = {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
+      scripts: [ 'http://example.com/somescript.js' ],
       devServer: 'http://localhost:3001',
       appMountId: 'app',
       window: {
