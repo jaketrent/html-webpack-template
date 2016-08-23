@@ -35,6 +35,7 @@ And some other optional:
 - `mobile`: Sets appropriate meta tags for page scaling.
 - `title`: The title to use for the generated HTML document.
 - `window`: object that defines data you need to bootstrap a javascript app
+- `meta`: object that defines the meta tags
 
 
 Plus any [html-webpack-plugin config options](https://github.com/ampedandwired/html-webpack-plugin#configuration) otherwise available.
@@ -58,6 +59,9 @@ Here's an example webpack config illustrating how to use these options in your `
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
+      },
+      meta: {
+        description: "a better default template for html-webpack-plugin"
       },
       mobile: true,
       window: {

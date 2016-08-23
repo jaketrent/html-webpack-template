@@ -22,6 +22,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: '../index.ejs',
       title: 'My App',
+      meta: {
+        description: "a better default template for html-webpack-plugin"
+      },
       mobile: true,
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
