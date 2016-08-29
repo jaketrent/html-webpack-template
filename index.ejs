@@ -6,6 +6,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="" <% if(htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <% var prependUrl = htmlWebpackPlugin.options.prependUrl || '' %>
   <% if (htmlWebpackPlugin.options.meta) { %>
   <% for (var key in htmlWebpackPlugin.options.meta) { %>
   <meta name="<%= key %>" content="<%= htmlWebpackPlugin.options.meta[key] %>">
@@ -22,7 +23,7 @@
   <% } %>
 
   <% for (var css in htmlWebpackPlugin.files.css) { %>
-  <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+  <link href="<%=prependUrl%><%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
   <% } %>
 
   <% if (htmlWebpackPlugin.options.baseHref) { %>
@@ -66,7 +67,7 @@
 <% } %>
 
 <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+<script src="<%=prependUrl%><%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
 <% } %>
 
 <% if (htmlWebpackPlugin.options.devServer) { %>
