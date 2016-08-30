@@ -25,18 +25,18 @@ There are a couple required parameters:
 
 And some other optional:
 
-- `appMountId`: div element id on which you plan to mount a javascript app (can include multiple elements using the `appMountIds` array)
-- `devServer`: insert the webpack-dev-server hot reload script at this host:port/path (eg, http://localhost:3000)
-- `baseHref`: Adjust the url for relative urls in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base))
+- `appMountId`: div element id on which you plan to mount a javascript app (can include multiple elements using the `appMountIds` array).
+- `devServer`: Insert the webpack-dev-server hot reload script at this host:port/path (eg, http://localhost:3000).
+- `baseHref`: Adjust the url for relative urls in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base)).
 - `filename`: The file to write the HTML to. Defaults to `index.ejs`.
    You can specify a subdirectory here too (eg: `assets/admin.html`).
 - `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
-- `meta`: object that defines the meta tags
+- `meta`: Object that defines the meta tags.
 - `mobile`: Sets appropriate meta tags for page scaling.
-- `scripts`: array of external script imports to include on page
+- `scripts`: Array of external script imports to include on page.
 - `title`: The title to use for the generated HTML document.
-- `window`: object that defines data you need to bootstrap a javascript app
+- `window`: Object that defines data you need to bootstrap a javascript app.
 
 
 Plus any [html-webpack-plugin config options](https://github.com/ampedandwired/html-webpack-plugin#configuration) otherwise available.
