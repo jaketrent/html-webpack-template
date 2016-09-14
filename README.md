@@ -34,6 +34,7 @@ And some other optional:
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
 - `meta`: Object that defines the meta tags.
 - `mobile`: Sets appropriate meta tags for page scaling.
+- `links`: Array of external css imports to include on page.
 - `scripts`: Array of external script imports to include on page.
 - `title`: The title to use for the generated HTML document.
 - `window`: Object that defines data you need to bootstrap a javascript app.
@@ -65,6 +66,9 @@ Here's an example webpack config illustrating how to use these options in your `
         description: "a better default template for html-webpack-plugin"
       },
       mobile: true,
+      links: [
+        'https://fonts.googleapis.com/css?family=Roboto"'
+      ],
       scripts: [
         'http://somecool.com/script.js'
       ],
