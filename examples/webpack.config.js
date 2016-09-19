@@ -31,6 +31,7 @@ module.exports = {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
+      links: [ 'https://fonts.googleapis.com/css?family=Roboto"' ],
       scripts: [ 'http://example.com/somescript.js' ],
       devServer: 'http://localhost:3001',
       appMountId: 'app',
