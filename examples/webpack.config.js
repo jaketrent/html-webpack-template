@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      inject: false,
       template: '../index.ejs',
       title: 'My App',
       meta: {
