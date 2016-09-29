@@ -22,8 +22,16 @@
   <% } %>
 
   <% if (htmlWebpackPlugin.options.links) { %>
-  <% for (var link of htmlWebpackPlugin.options.links) { %>
-  <link href="<%= link %>" rel="stylesheet">
+  <% for(var link of htmlWebpackPlugin.options.links) { %>
+  <% if (link !== null && typeof link === 'object' ) { %>
+  <link
+    <% for (var key in link) { %>
+    <%= key %>="<%= link[key] %>"
+    <% } %>
+  >
+  <% } else { %>
+    <link href="<%= link %>" rel="stylesheet">
+  <% } %>
   <% } %>
   <% } %>
 
