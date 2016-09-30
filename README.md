@@ -78,7 +78,7 @@ Here's an example webpack config illustrating how to use these options in your `
       appMountElement: 'article',
       appMountId: 'app',
       baseHref: 'http://example.com/awesome',
-      devServer: 3001,
+      devServer: 'http://localhost:3001',
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
@@ -102,7 +102,7 @@ Here's an example webpack config illustrating how to use these options in your `
         }
       ],
       scripts: [
-        'http://somecool.com/script.js',
+        'http://example.com/somescript.js',
         {
           crossorigin: 'anonymous',
           integrity: 'sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=',
@@ -110,6 +110,7 @@ Here's an example webpack config illustrating how to use these options in your `
           type: 'text/javascript'
         }
       ],
+      title: 'My App',
       window: {
         env: {
           apiHost: 'http://myapi.com/api/v1'

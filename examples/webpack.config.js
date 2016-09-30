@@ -22,15 +22,17 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       template: '../index.ejs',
-      title: 'My App',
-      meta: {
-        description: "a better default template for html-webpack-plugin"
-      },
-      mobile: true,
+      appMountElement: 'article',
+      appMountId: 'app',
+      devServer: 'http://localhost:3001',
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
+      meta: {
+        description: 'A better default template for html-webpack-plugin.'
+      },
+      mobile: true,
       links: [
         'https://fonts.googleapis.com/css?family=Roboto',
         {
@@ -54,9 +56,7 @@ module.exports = {
           type: 'text/javascript'
         }
       ],
-      devServer: 'http://localhost:3001',
-      appMountElement: 'article',
-      appMountId: 'app',
+      title: 'My App',
       window: {
         env: {
           apiHost: 'http://myapi.com/api/v1'
