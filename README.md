@@ -34,9 +34,9 @@ And some other optional:
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
 - `meta`: Object that defines the meta tags.
 - `mobile`: Sets appropriate meta tags for page scaling.
-- `links`: Array of external `<link >` imports to include on page.
-  - If the array value is a string, the value is assigned to the `href` attribute and the `rel` attribute is set to `stylesheet`
-  - If the array value is an object, the object's properties and values are used as the attribute names and values.
+- `links`: Array of `<link >` elements.
+  - If an array element is a string, the value is assigned to the `href` attribute and the `rel` attribute is set to `"stylesheet"`;
+  - If an array element is an object, the object's properties and values are used as the attribute names and values, respectively.
 - `scripts`: Array of external script imports to include on page.
 - `title`: The title to use for the generated HTML document.
 - `window`: Object that defines data you need to bootstrap a javascript app.
@@ -69,7 +69,7 @@ Here's an example webpack config illustrating how to use these options in your `
       },
       mobile: true,
       links: [
-        'https://fonts.googleapis.com/css?family=Roboto"',
+        'https://fonts.googleapis.com/css?family=Roboto',
         {
           rel: 'apple-touch-icon',
           sizes: '180x180',

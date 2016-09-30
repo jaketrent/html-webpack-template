@@ -32,7 +32,7 @@ module.exports = {
         pageViewOnLoad: true
       },
       links: [ 
-        'https://fonts.googleapis.com/css?family=Roboto"',
+        'https://fonts.googleapis.com/css?family=Roboto',
         {
           rel: 'apple-touch-icon',
           sizes: '180x180',
