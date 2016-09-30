@@ -38,11 +38,17 @@ And some other optional:
 - `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
 - `links`: Array of `<link>` elements. Default value: `[]`.
-  - If an array element is a string, the value is assigned to the `href` attribute and the `rel` attribute is set to `"stylesheet"`;
-  - If an array element is an object, the object's properties and values are used as the attribute names and values, respectively.
+  - If an array element is a string, the value is assigned to the `href` attribute and the `rel` attribute is set to
+    `"stylesheet"`;
+  - If an array element is an object, the object's properties and values are used as the attribute names and values,
+    respectively.
 - `meta`: Object that defines the meta tags. Default value: `{}`.
 - `mobile`: Sets appropriate meta tag for page scaling.
 - `scripts`: Array of external script imports to include on page. Default value: `[]`.
+  - If an array element is a string, the value is assigned to the `src` attribute and the `type` attribute is set to
+    `"text/javascript"`;
+  - If an array element is an object, the object's properties and values are used as the attribute names and values,
+    respectively.
 - `title`: The title to use for the generated HTML document. Default value: `'Webpack App'`.
 - `window`: Object that defines data you need to bootstrap a JavaScript app.
 
@@ -78,19 +84,25 @@ Here's an example webpack config illustrating how to use these options in your `
       links: [
         'https://fonts.googleapis.com/css?family=Roboto',
         {
+          href: '/apple-touch-icon.png',
           rel: 'apple-touch-icon',
-          sizes: '180x180',
-          href: '/apple-touch-icon.png'
+          sizes: '180x180'
         },
         {
-          rel: 'icon',
-          type: 'image/png',
           href: '/favicon-32x32.png',
-          sizes: '32x32'
+          rel: 'icon',
+          sizes: '32x32',
+          type: 'image/png'
         }
       ],
       scripts: [
-        'http://somecool.com/script.js'
+        'http://somecool.com/script.js',
+        {
+          crossorigin: 'anonymous',
+          integrity: 'sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=',
+          src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js',
+          type: 'text/javascript'
+        }
       ],
       window: {
         env: {

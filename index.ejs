@@ -42,15 +42,8 @@
     <% } %>
 
     <% for (item of links) { %>
-    <% if (item && typeof item === 'object') { %>
-  	<link
-  	  <% for (key in item) { %>
-      <%= key %>="<%= item[key] %>"
-      <% } %>
-    >
-    <% } else { %>
-    <link href="<%= item %>" rel="stylesheet">
-    <% } %>
+    <% if (typeof item === 'string' || item instanceof String) { item = { href: item, rel: 'stylesheet' } } %>
+  	<link<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
     <% } %>
 
     <% for (key in css) { %>
@@ -87,7 +80,8 @@
     <% } %>
 
     <% for (item of scripts) { %>
-    <script src="<%= item %>" type="text/javascript"></script>
+    <% if (typeof item === 'string' || item instanceof String) { item = { src: item, type: 'text/javascript' } } %>
+    <script<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>></script>
     <% } %>
 
     <% for (key in chunks) { %>

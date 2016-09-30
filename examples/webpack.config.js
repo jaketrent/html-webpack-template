@@ -31,21 +31,29 @@ module.exports = {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
-      links: [ 
+      links: [
         'https://fonts.googleapis.com/css?family=Roboto',
         {
+          href: '/apple-touch-icon.png',
           rel: 'apple-touch-icon',
-          sizes: '180x180',
-          href: '/apple-touch-icon.png'
+          sizes: '180x180'
         },
         {
-          rel: 'icon',
-          type: 'image/png',
           href: '/favicon-32x32.png',
-          sizes: '32x32'
-        } 
+          rel: 'icon',
+          sizes: '32x32',
+          type: 'image/png'
+        }
       ],
-      scripts: [ 'http://example.com/somescript.js' ],
+      scripts: [
+        'http://example.com/somescript.js',
+        {
+          crossorigin: 'anonymous',
+          integrity: 'sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=',
+          src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js',
+          type: 'text/javascript'
+        }
+      ],
       devServer: 'http://localhost:3001',
       appMountId: 'app',
       window: {
