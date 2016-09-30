@@ -1,8 +1,12 @@
 # HTML Webpack Template
 
-This is a template for the [webpack](http://webpack.github.io/) plugin [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin).  It has a few extra features than the [default template](https://github.com/ampedandwired/html-webpack-plugin/blob/master/default_index.html) which will hopefully make it less likely that you'll have to create your own `index.html` file in your webpack project.
+This is a template for the [webpack](http://webpack.github.io/) plugin [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin).
+It has a few extra features than the [default template](https://github.com/ampedandwired/html-webpack-plugin/blob/master/default_index.html)
+which will hopefully make it less likely that you'll have to create your own `index.html` file in your webpack project.
 
-Templates for the html-webpack-plugin are implemented using [underscore templates](http://underscorejs.org/#template) (previously, in 2.x, [blueimp templates](https://github.com/blueimp/JavaScript-Templates)).  You can write your own as well.
+Templates for the html-webpack-plugin are implemented using [underscore templates](http://underscorejs.org/#template)
+(previously, in 2.x, [blueimp templates](https://github.com/blueimp/JavaScript-Templates)). You can write your own as
+well.
 
 #### Legacy version
 
@@ -20,29 +24,30 @@ $ npm install html-webpack-template --save-dev
 
 There are a couple required parameters:
 
-- `inject`: Set to `false`.  Controls asset addition to the template.  This template takes care of that.
-- `template`: Specify this module's `index.ejs` file
+- `inject`: Set to `false`. Controls asset addition to the template. This template takes care of that.
+- `template`: Specify this module's `index.ejs` file.
 
 And some other optional:
-
-- `appMountId`: div element id on which you plan to mount a javascript app (can include multiple elements using the `appMountIds` array).
-- `devServer`: Insert the webpack-dev-server hot reload script at this host:port/path (eg, http://localhost:3000).
-- `baseHref`: Adjust the url for relative urls in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base)).
-- `filename`: The file to write the HTML to. Defaults to `index.ejs`.
-   You can specify a subdirectory here too (eg: `assets/admin.html`).
+- `appMountId`: The `<div>` element id on which you plan to mount a JavaScript app.
+- `appMountIds`: An array of application element ids.
+- `baseHref`: Adjust the URL for relative URLs in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base)).
+- `devServer`: Insert the webpack-dev-server hot reload script at this host:port/path; e.g., http://localhost:3000.
 - `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
+- `links`: Array of `<link>` elements.
+  - If an array element is a string, the value is assigned to the `href` attribute and the `rel` attribute is set to
+    `"stylesheet"`;
+  - If an array element is an object, the object's properties and values are used as the attribute names and values,
+    respectively.
 - `meta`: Object that defines the meta tags.
-- `mobile`: Sets appropriate meta tags for page scaling.
-- `links`: Array of external `<link >` imports to include on page.
-  - If the array value is a string, the value is assigned to the `href` attribute and the `rel` attribute is set to `stylesheet`
-  - If the array value is an object, the object's properties and values are used as the attribute names and values.
+- `mobile`: Sets appropriate meta tag for page scaling.
 - `scripts`: Array of external script imports to include on page.
-- `title`: The title to use for the generated HTML document.
-- `window`: Object that defines data you need to bootstrap a javascript app.
+- `window`: Object that defines data you need to bootstrap a JavaScript app.
 
+Plus any [html-webpack-plugin config options](https://github.com/ampedandwired/html-webpack-plugin#configuration)
+otherwise available.
 
-Plus any [html-webpack-plugin config options](https://github.com/ampedandwired/html-webpack-plugin#configuration) otherwise available.
+### Example
 
 Here's an example webpack config illustrating how to use these options in your `webpack.config.js`:
 
@@ -54,44 +59,45 @@ Here's an example webpack config illustrating how to use these options in your `
       // Required
       inject: false,
       template: require('html-webpack-template'),
-      //template: 'node_modules/html-webpack-template/index.ejs',
+      // template: 'node_modules/html-webpack-template/index.ejs',
 
       // Optional
       appMountId: 'app',
       baseHref: 'http://example.com/awesome',
-      devServer: 3001,
+      devServer: 'http://localhost:3001',
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
       meta: {
-        description: "a better default template for html-webpack-plugin"
+        description: 'A better default template for html-webpack-plugin.'
       },
       mobile: true,
       links: [
-        'https://fonts.googleapis.com/css?family=Roboto"',
+        'https://fonts.googleapis.com/css?family=Roboto',
         {
+          href: '/apple-touch-icon.png',
           rel: 'apple-touch-icon',
-          sizes: '180x180',
-          href: '/apple-touch-icon.png'
+          sizes: '180x180'
         },
         {
-          rel: 'icon',
-          type: 'image/png',
           href: '/favicon-32x32.png',
-          sizes: '32x32'
+          rel: 'icon',
+          sizes: '32x32',
+          type: 'image/png'
         }
       ],
       scripts: [
-        'http://somecool.com/script.js'
+        'http://example.com/somescript.js'
       ],
+      title: 'My App',
       window: {
         env: {
           apiHost: 'http://myapi.com/api/v1'
         }
       }
 
-      // and any other config options from html-webpack-plugin
+      // And any other config options from html-webpack-plugin:
       // https://github.com/ampedandwired/html-webpack-plugin#configuration
     })
   ]
