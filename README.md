@@ -29,12 +29,17 @@ There are a couple required parameters:
 
 And some other optional:
 
-- `appMountId`: The `<div>` element id on which you plan to mount a JavaScript app (can include multiple elements using
-                the `appMountIds` array).
+- `appMountElement`: The HTML element name to use as the application element(s). Default value: `'div'`.
+- `appMountId`: The application element id on which you plan to mount a JavaScript app. The value of this option is
+  prepended to the `appMountIds` option. See `appMountIds` for possible values.
+- `appMountIds`: An array of application element ids or objects.
+  - If an array element is a string, the value is assigned to the `id` attribute;
+  - If an array element is an object, the object's properties and values are used as the attribute names and values,
+    respectively.
 - `devServer`: Insert the webpack-dev-server hot reload script at this host:port/path; e.g., http://localhost:3000.
 - `baseHref`: Adjust the URL for relative URLs in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base)).
 - `filename`: The file to write the HTML to. Defaults to `index.ejs`. You can specify a subdirectory here too; e.g.,
-              `assets/admin.html`.
+  `assets/admin.html`.
 - `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
 - `links`: Array of `<link>` elements. Default value: `[]`.
@@ -70,6 +75,7 @@ Here's an example webpack config illustrating how to use these options in your `
       // template: 'node_modules/html-webpack-template/index.ejs',
 
       // Optional
+      appMountElement: 'article',
       appMountId: 'app',
       baseHref: 'http://example.com/awesome',
       devServer: 3001,

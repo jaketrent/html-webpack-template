@@ -8,6 +8,7 @@
 <% var links = options.links || [] %>
 <% var css = files.css %>
 <% var baseHref = options.baseHref %>
+<% var appMountElement = options.appMountElement || 'div' %>
 <% var appMountId = options.appMountId %>
 <% var appMountIds = options.appMountIds || [] %>
 <% var globals = options.window %>
@@ -65,7 +66,8 @@
 
     <% if (appMountId) { appMountIds.unshift(appMountId) } %>
     <% for (item of appMountIds) { %>
-    <div id="<%= item %>"></div>
+    <% if (typeof item === 'string' || item instanceof String) { item = { id: item } } %>
+    <<%= appMountElement %><% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>></<%= appMountElement %>>
     <% } %>
 
     <% if (globals) { %>

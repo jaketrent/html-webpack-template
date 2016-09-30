@@ -55,6 +55,7 @@ module.exports = {
         }
       ],
       devServer: 'http://localhost:3001',
+      appMountElement: 'article',
       appMountId: 'app',
       window: {
         env: {
