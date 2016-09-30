@@ -63,10 +63,7 @@
     </div>
     <% } %>
 
-    <% if (appMountId) { %>
-    <div id="<%= appMountId %>"></div>
-    <% } %>
-
+    <% if (appMountId) { appMountIds.unshift(appMountId) } %>
     <% for (item of appMountIds) { %>
     <div id="<%= item %>"></div>
     <% } %>
