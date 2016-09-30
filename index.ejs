@@ -2,16 +2,16 @@
 <% var files = htmlWebpackPlugin.files %>
 <% var options = htmlWebpackPlugin.options %>
 <% var manifest = files.manifest %>
-<% var meta = options.meta %>
+<% var meta = options.meta || {} %>
 <% var title = options.title || 'Webpack App' %>
 <% var favicon = files.favicon %>
-<% var links = options.links %>
+<% var links = options.links || [] %>
 <% var css = files.css %>
 <% var baseHref = options.baseHref %>
 <% var appMountId = options.appMountId %>
-<% var appMountIds = options.appMountIds %>
+<% var appMountIds = options.appMountIds || [] %>
 <% var globals = options.window %>
-<% var scripts = options.scripts %>
+<% var scripts = options.scripts || [] %>
 <% var chunks = files.chunks %>
 <% var devServer = options.devServer %>
 <% var googleAnalytics = options.googleAnalytics %>
@@ -29,10 +29,8 @@
 
     <title><%= title %></title>
 
-    <% if (meta) { %>
     <% for (key in meta) { %>
     <meta content="<%= meta[key] %>" name="<%= key %>">
-    <% } %>
     <% } %>
 
     <% if (options.mobile) { %>
@@ -43,7 +41,6 @@
     <link href="<%= favicon %>" rel="shortcut icon">
     <% } %>
 
-    <% if (links) { %>
     <% for (item of links) { %>
     <% if (item && typeof item === 'object') { %>
   	<link
@@ -53,7 +50,6 @@
     >
     <% } else { %>
     <link href="<%= item %>" rel="stylesheet">
-    <% } %>
     <% } %>
     <% } %>
 
@@ -78,10 +74,8 @@
     <div id="<%= appMountId %>"></div>
     <% } %>
 
-    <% if (appMountIds) { %>
     <% for (item of appMountIds) { %>
     <div id="<%= item %>"></div>
-    <% } %>
     <% } %>
 
     <% if (globals) { %>
@@ -92,10 +86,8 @@
     </script>
     <% } %>
 
-    <% if (scripts) { %>
     <% for (item of scripts) { %>
     <script src="<%= item %>" type="text/javascript"></script>
-    <% } %>
     <% } %>
 
     <% for (key in chunks) { %>
