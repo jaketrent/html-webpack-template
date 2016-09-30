@@ -31,7 +31,20 @@ module.exports = {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
-      links: [ 'https://fonts.googleapis.com/css?family=Roboto"' ],
+      links: [ 
+        'https://fonts.googleapis.com/css?family=Roboto"',
+        {
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+          href: '/apple-touch-icon.png'
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          href: '/favicon-32x32.png',
+          sizes: '32x32'
+        } 
+      ],
       scripts: [ 'http://example.com/somescript.js' ],
       devServer: 'http://localhost:3001',
       appMountId: 'app',
