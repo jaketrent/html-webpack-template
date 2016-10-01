@@ -31,7 +31,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <% } %>
 
-    <% for (item of links) { %>
+    <% for (item of htmlWebpackPlugin.options.links) { %>
     <% if (typeof item === 'string' || item instanceof String) { item = { href: item, rel: 'stylesheet' } } %>
   	<link<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
     <% } %>
@@ -80,14 +80,17 @@
 
     <% if (htmlWebpackPlugin.options.googleAnalytics) { %>
     <script type="text/javascript">
-      !function(o,n,f,a,t,e,r){o.GoogleAnalyticsObject=t,o[t]=o[t]||function(){(o[t].q=o[t].q||[]).push(arguments)},o[t].l=1*new Date,e=n.createElement(f),r=n.getElementsByTagName(f)[0],e.async=1,e.src=a,r.parentNode.insertBefore(e,r)}(window,document,"script","//www.google-analytics.com/analytics.js","ga")
+      window.GoogleAnalyticsObject='ga';window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+
       <% if (htmlWebpackPlugin.options.googleAnalytics.trackingId) { %>
-      ga("create","<%= htmlWebpackPlugin.options.googleAnalytics.trackingId %>","auto")
-      <% } else { throw new Error("html-webpack-template requires googleAnalytics.trackingId config"); }%>
-      <% if (googleAnalytics.pageViewOnLoad) { %>
-      ga("send","pageview")
+      ga('create','<%= htmlWebpackPlugin.options.googleAnalytics.trackingId %>','auto');
+      <% } else { throw new Error("html-webpack-template requires googleAnalytics.trackingId config"); } %>
+
+      <% if (htmlWebpackPlugin.options.googleAnalytics.pageViewOnLoad) { %>
+      ga('send','pageview')
       <% } %>
     </script>
+    <script async defer src="https://www.google-analytics.com/analytics.js" type="text/javascript"></script>
     <% } %>
   </body>
 </html>
