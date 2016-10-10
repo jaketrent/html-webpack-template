@@ -22,32 +22,38 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       template: '../index.ejs',
-      title: 'My App',
-      meta: {
-        description: "a better default template for html-webpack-plugin"
-      },
-      mobile: true,
+      appMountId: 'app',
+      devServer: 'http://localhost:3001',
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
-      links: [ 
-        'https://fonts.googleapis.com/css?family=Roboto"',
+      meta: {
+        description: 'A better default template for html-webpack-plugin.'
+      },
+      mobile: true,
+      links: [
+        'https://fonts.googleapis.com/css?family=Roboto',
         {
+          href: '/apple-touch-icon.png',
           rel: 'apple-touch-icon',
-          sizes: '180x180',
-          href: '/apple-touch-icon.png'
+          sizes: '180x180'
         },
         {
-          rel: 'icon',
-          type: 'image/png',
           href: '/favicon-32x32.png',
-          sizes: '32x32'
-        } 
+          rel: 'icon',
+          sizes: '32x32',
+          type: 'image/png'
+        }
       ],
-      scripts: [ 'http://example.com/somescript.js' ],
-      devServer: 'http://localhost:3001',
-      appMountId: 'app',
+      scripts: [
+        'http://example.com/somescript.js',
+        {
+          src: '/myModule.js',
+          type: 'module'
+        }
+      ],
+      title: 'My App',
       window: {
         env: {
           apiHost: 'http://myapi.com/api/v1'
