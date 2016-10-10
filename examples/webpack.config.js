@@ -47,7 +47,11 @@ module.exports = {
         }
       ],
       scripts: [
-        'http://example.com/somescript.js'
+        'http://example.com/somescript.js',
+        {
+          src: '/myModule.js',
+          type: 'module'
+        }
       ],
       title: 'My App',
       window: {

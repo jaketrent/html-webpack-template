@@ -42,6 +42,10 @@ And some other optional:
 - `meta`: Object that defines the meta tags.
 - `mobile`: Sets appropriate meta tag for page scaling.
 - `scripts`: Array of external script imports to include on page.
+  - If an array element is a string, the value is assigned to the `src` attribute and the `type` attribute is set to
+    `"text/javascript"`;
+  - If an array element is an object, the object's properties and values are used as the attribute names and values,
+    respectively.
 - `window`: Object that defines data you need to bootstrap a JavaScript app.
 
 Plus any [html-webpack-plugin config options](https://github.com/ampedandwired/html-webpack-plugin#configuration)
@@ -88,7 +92,11 @@ Here's an example webpack config illustrating how to use these options in your `
         }
       ],
       scripts: [
-        'http://example.com/somescript.js'
+        'http://example.com/somescript.js',
+        {
+          src: '/myModule.js',
+          type: 'module'
+        }
       ],
       title: 'My App',
       window: {
