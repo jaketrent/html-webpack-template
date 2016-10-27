@@ -6,7 +6,7 @@
 <% htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || [] %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html<% if (htmlWebpackPlugin.files.lang) { %> lang="<%= htmlWebpackPlugin.options.lang %>"<% } %><% else { %> lang="en"<% } %>>
   <head>
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">

@@ -39,6 +39,7 @@ And some other optional:
     `"stylesheet"`;
   - If an array element is an object, the object's properties and values are used as the attribute names and values,
     respectively.
+- `lang`: String of your webpage language
 - `meta`: Object that defines the meta tags.
 - `mobile`: Sets appropriate meta tag for page scaling.
 - `scripts`: Array of external script imports to include on page.
@@ -73,6 +74,7 @@ Here's an example webpack config illustrating how to use these options in your `
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
+      lang: 'en-US',
       meta: {
         description: 'A better default template for html-webpack-plugin.'
       },
