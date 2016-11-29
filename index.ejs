@@ -64,6 +64,10 @@
     </script>
     <% } %>
 
+    <% if (htmlWebpackPlugin.options.inlineManifestWebpackName) { %>
+        <%= htmlWebpackPlugin.files[htmlWebpackPlugin.options.inlineManifestWebpackName] %>
+    <% } %>
+
     <% for (item of htmlWebpackPlugin.options.scripts) { %>
     <% if (typeof item === 'string' || item instanceof String) { item = { src: item, type: 'text/javascript' } } %>
   	<script<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>></script>
