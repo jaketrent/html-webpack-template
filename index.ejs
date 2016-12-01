@@ -15,6 +15,10 @@
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
 
+    <% if (htmlWebpackPlugin.options.baseHref) { %>
+    <base href="<%= htmlWebpackPlugin.options.baseHref %>">
+    <% } %>
+
     <% for (key in htmlWebpackPlugin.options.meta) { %>
     <meta content="<%= htmlWebpackPlugin.options.meta[key] %>" name="<%= key %>">
     <% } %>
@@ -38,9 +42,6 @@
     <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet">
     <% } %>
 
-    <% if (htmlWebpackPlugin.options.baseHref) { %>
-    <base href="<%= htmlWebpackPlugin.options.baseHref %>">
-    <% } %>
   </head>
   <body>
     <% if (htmlWebpackPlugin.options.unsupportedBrowser) { %>
