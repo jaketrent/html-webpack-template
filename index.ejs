@@ -52,7 +52,9 @@
     </div>
     <% } %>
 
-    <% if (htmlWebpackPlugin.options.appMountId) { htmlWebpackPlugin.options.appMountIds.unshift(htmlWebpackPlugin.options.appMountId) } %>
+    <% if (htmlWebpackPlugin.options.appMountId) { %>
+    <div id="<%= htmlWebpackPlugin.options.appMountId %>"></div>
+    <% } %>
     <% for (item of htmlWebpackPlugin.options.appMountIds) { %>
     <div id="<%= item %>"></div>
     <% } %>
