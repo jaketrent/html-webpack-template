@@ -19,8 +19,14 @@
     <base href="<%= htmlWebpackPlugin.options.baseHref %>">
     <% } %>
 
-    <% for (item of htmlWebpackPlugin.options.meta) { %>
-    <meta<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
+    <% if (Array.isArray(htmlWebpackPlugin.options.meta)) { %>
+      <% for (item of htmlWebpackPlugin.options.meta) { %>
+      <meta<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
+      <% } %>
+    <% } else { %>
+      <% for (key in htmlWebpackPlugin.options.meta) { %>
+      <meta content="<%= htmlWebpackPlugin.options.meta[key] %>" name="<%= key %>">
+      <% } %>
     <% } %>
 
     <title><%= htmlWebpackPlugin.options.title %></title>
