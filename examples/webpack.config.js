@@ -28,6 +28,7 @@ module.exports = {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
+      lang: 'en-US',
       meta: {
         description: 'A better default template for html-webpack-plugin.'
       },
