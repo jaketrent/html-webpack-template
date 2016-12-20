@@ -2,7 +2,7 @@
 
 <% htmlWebpackPlugin.options.appMountIds = htmlWebpackPlugin.options.appMountIds || [] %>
 <% htmlWebpackPlugin.options.links = htmlWebpackPlugin.options.links || [] %>
-<% htmlWebpackPlugin.options.meta = htmlWebpackPlugin.options.meta || {} %>
+<% htmlWebpackPlugin.options.meta = htmlWebpackPlugin.options.meta || [] %>
 <% htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || [] %>
 
 <!DOCTYPE html>
@@ -19,8 +19,8 @@
     <base href="<%= htmlWebpackPlugin.options.baseHref %>">
     <% } %>
 
-    <% for (key in htmlWebpackPlugin.options.meta) { %>
-    <meta content="<%= htmlWebpackPlugin.options.meta[key] %>" name="<%= key %>">
+    <% for (item of htmlWebpackPlugin.options.meta) { %>
+    <meta<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
     <% } %>
 
     <title><%= htmlWebpackPlugin.options.title %></title>

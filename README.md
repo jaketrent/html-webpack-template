@@ -39,7 +39,7 @@ And some other optional:
     `"stylesheet"`;
   - If an array element is an object, the object's properties and values are used as the attribute names and values,
     respectively.
-- `meta`: Object that defines the meta tags.
+- `meta`: Array of objects containing key value pairs to be included as meta tags. See the example config in this repo.
 - `mobile`: Sets appropriate meta tag for page scaling.
 - `inlineManifestWebpackName`: For use with [inline-manifest-webpack-plugin](https://www.npmjs.com/package/inline-manifest-webpack-plugin).
 - `scripts`: Array of external script imports to include on page.
