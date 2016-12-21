@@ -28,9 +28,12 @@ module.exports = {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
-      meta: {
-        description: 'A better default template for html-webpack-plugin.'
-      },
+      meta: [
+        {
+          name: 'description',
+          content: 'A better default template for html-webpack-plugin.'
+        }
+      ],
       mobile: true,
       links: [
         'https://fonts.googleapis.com/css?family=Roboto',
