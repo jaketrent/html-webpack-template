@@ -1,10 +1,8 @@
-<%# Declare temp variables. %>
 <% var item, key %>
 
-<%# Set defaults. %>
 <% htmlWebpackPlugin.options.appMountIds = htmlWebpackPlugin.options.appMountIds || [] %>
 <% htmlWebpackPlugin.options.links = htmlWebpackPlugin.options.links || [] %>
-<% htmlWebpackPlugin.options.meta = htmlWebpackPlugin.options.meta || {} %>
+<% htmlWebpackPlugin.options.meta = htmlWebpackPlugin.options.meta || [] %>
 <% htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || [] %>
 
 <!DOCTYPE html>
@@ -17,8 +15,14 @@
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
 
-    <% for (key in htmlWebpackPlugin.options.meta) { %>
-    <meta content="<%= htmlWebpackPlugin.options.meta[key] %>" name="<%= key %>">
+    <% if (htmlWebpackPlugin.options.baseHref) { %>
+    <base href="<%= htmlWebpackPlugin.options.baseHref %>">
+    <% } %>
+
+    <% if (Array.isArray(htmlWebpackPlugin.options.meta)) { %>
+      <% for (item of htmlWebpackPlugin.options.meta) { %>
+      <meta<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
+      <% } %>
     <% } %>
 
     <title><%= htmlWebpackPlugin.options.title %></title>
@@ -40,9 +44,6 @@
     <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet">
     <% } %>
 
-    <% if (htmlWebpackPlugin.options.baseHref) { %>
-    <base href="<%= htmlWebpackPlugin.options.baseHref %>">
-    <% } %>
   </head>
   <body>
     <% if (htmlWebpackPlugin.options.unsupportedBrowser) { %>
@@ -53,7 +54,9 @@
     </div>
     <% } %>
 
-    <% if (htmlWebpackPlugin.options.appMountId) { htmlWebpackPlugin.options.appMountIds.unshift(htmlWebpackPlugin.options.appMountId) } %>
+    <% if (htmlWebpackPlugin.options.appMountId) { %>
+    <div id="<%= htmlWebpackPlugin.options.appMountId %>"></div>
+    <% } %>
     <% for (item of htmlWebpackPlugin.options.appMountIds) { %>
     <div id="<%= item %>"></div>
     <% } %>
@@ -64,6 +67,10 @@
       window['<%= key %>'] = <%= JSON.stringify(htmlWebpackPlugin.options.window[key]) %>;
       <% } %>
     </script>
+    <% } %>
+
+    <% if (htmlWebpackPlugin.options.inlineManifestWebpackName) { %>
+        <%= htmlWebpackPlugin.files[htmlWebpackPlugin.options.inlineManifestWebpackName] %>
     <% } %>
 
     <% for (item of htmlWebpackPlugin.options.scripts) { %>

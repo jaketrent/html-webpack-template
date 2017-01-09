@@ -39,8 +39,9 @@ And some other optional:
     `"stylesheet"`;
   - If an array element is an object, the object's properties and values are used as the attribute names and values,
     respectively.
-- `meta`: Object that defines the meta tags.
+- `meta`: Array of objects containing key value pairs to be included as meta tags.
 - `mobile`: Sets appropriate meta tag for page scaling.
+- `inlineManifestWebpackName`: For use with [inline-manifest-webpack-plugin](https://www.npmjs.com/package/inline-manifest-webpack-plugin).
 - `scripts`: Array of external script imports to include on page.
   - If an array element is a string, the value is assigned to the `src` attribute and the `type` attribute is set to
     `"text/javascript"`;
@@ -91,6 +92,7 @@ Here's an example webpack config illustrating how to use these options in your `
           type: 'image/png'
         }
       ],
+      inlineManifestWebpackName: 'webpackManifest',
       scripts: [
         'http://example.com/somescript.js',
         {
