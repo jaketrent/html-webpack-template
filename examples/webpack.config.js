@@ -49,6 +49,7 @@ module.exports = {
           type: 'image/png'
         }
       ],
+      content: '<script type="application/json">{EMBEDDED_BY_SERVER_RENDER}</script>',
       scripts: [
         'http://example.com/somescript.js',
         {

@@ -61,6 +61,10 @@
     <div id="<%= item %>"></div>
     <% } %>
 
+    <% if (htmlWebpackPlugin.options.content) { %>
+    <%= htmlWebpackPlugin.options.content %>
+    <% } %>
+
     <% if (htmlWebpackPlugin.options.window) { %>
     <script type="text/javascript">
       <% for (key in htmlWebpackPlugin.options.window) { %>

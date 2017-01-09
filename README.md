@@ -31,6 +31,7 @@ And some other optional:
 - `appMountId`: The `<div>` element id on which you plan to mount a JavaScript app.
 - `appMountIds`: An array of application element ids.
 - `baseHref`: Adjust the URL for relative URLs in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base)).
+- `content`: A string of html to embed within the `<body>` element.
 - `devServer`: Insert the webpack-dev-server hot reload script at this host:port/path; e.g., http://localhost:3000.
 - `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
@@ -69,6 +70,7 @@ Here's an example webpack config illustrating how to use these options in your `
       // Optional
       appMountId: 'app',
       baseHref: 'http://example.com/awesome',
+      content: '<script type="application/json">{EMBEDDED_BY_SERVER_RENDER}</script>',
       devServer: 'http://localhost:3001',
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
