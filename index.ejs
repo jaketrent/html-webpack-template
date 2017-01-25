@@ -32,7 +32,11 @@
     <% } %>
 
     <% if (htmlWebpackPlugin.options.mobile) { %>
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <% var viewportMetaContents = ["width=device-width", "initial-scale=1"] %>
+    <% if (typeof htmlWebpackPlugin.options.userScalable !== 'undefined') { %>
+    <%     viewportMetaContents.push("user-scalable=" + (htmlWebpackPlugin.options.userScalable ? "yes" : "no")) %>
+    <% } %>
+    <meta content="<%= viewportMetaContents.join(', ') %>" name="viewport">
     <% } %>
 
     <% for (item of htmlWebpackPlugin.options.links) { %>

@@ -41,6 +41,9 @@ And some other optional:
     respectively.
 - `meta`: Array of objects containing key value pairs to be included as meta tags.
 - `mobile`: Sets appropriate meta tag for page scaling.
+- `userScalable`: Sets the `user-scalable` content of the `viewport` meta tag. (only has effect if `mobile: true`)
+  - `true` - Sets `user-scalable` to `yes`
+  - `false` - Sets `user-scalable` to `no`
 - `inlineManifestWebpackName`: For use with [inline-manifest-webpack-plugin](https://www.npmjs.com/package/inline-manifest-webpack-plugin).
 - `scripts`: Array of external script imports to include on page.
   - If an array element is a string, the value is assigned to the `src` attribute and the `type` attribute is set to
