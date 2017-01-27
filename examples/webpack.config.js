@@ -35,6 +35,7 @@ module.exports = {
         }
       ],
       mobile: true,
+      userScalable: false,
       links: [
         'https://fonts.googleapis.com/css?family=Roboto',
         {
