@@ -34,6 +34,7 @@ And some other optional:
 - `devServer`: Insert the webpack-dev-server hot reload script at this host:port/path; e.g., http://localhost:3000.
 - `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
+- `googleAnalytics.debug`: Enable debug version of Google Analytics
 - `links`: Array of `<link>` elements.
   - If an array element is a string, the value is assigned to the `href` attribute and the `rel` attribute is set to
     `"stylesheet"`;
@@ -72,7 +73,8 @@ Here's an example webpack config illustrating how to use these options in your `
       devServer: 'http://localhost:3001',
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
-        pageViewOnLoad: true
+        pageViewOnLoad: true,
+        debug: true
       },
       meta: [
         {
