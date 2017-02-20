@@ -35,6 +35,8 @@ And some other optional:
 - `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
 - `googleAnalytics.debug`: Enable debug version of Google Analytics
+- `googleAnalytics.sendHitTaskDisabled`: Disable sending hits to Google Analytics. More info about
+ [GA Debugging](https://developers.google.com/analytics/devguides/collection/analyticsjs/debugging?hl=en).
 - `links`: Array of `<link>` elements.
   - If an array element is a string, the value is assigned to the `href` attribute and the `rel` attribute is set to
     `"stylesheet"`;
@@ -74,7 +76,8 @@ Here's an example webpack config illustrating how to use these options in your `
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true,
-        debug: true
+        debug: true,
+        sendHitTaskDisabled: true
       },
       meta: [
         {

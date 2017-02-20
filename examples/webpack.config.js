@@ -27,7 +27,8 @@ module.exports = {
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true,
-        debug: true
+        debug: true,
+        sendHitTaskDisabled: true
       },
       meta: [
         {

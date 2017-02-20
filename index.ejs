@@ -99,6 +99,10 @@
       <% if (htmlWebpackPlugin.options.googleAnalytics.pageViewOnLoad) { %>
       ga('send','pageview');
       <% } %>
+
+      <% if (htmlWebpackPlugin.options.googleAnalytics.sendHitTaskDisabled) { %>
+      ga('set', 'sendHitTask', null);
+      <% } %>
     </script>
     <script async defer src="https://www.google-analytics.com/<%= googleAnalyticsScript %>" type="text/javascript"></script>
     <% } %>
