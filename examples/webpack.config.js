@@ -26,7 +26,9 @@ module.exports = {
       devServer: 'http://localhost:3001',
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
-        pageViewOnLoad: true
+        pageViewOnLoad: true,
+        debug: true,
+        sendHitTaskDisabled: true
       },
       meta: [
         {
