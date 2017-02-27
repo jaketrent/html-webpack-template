@@ -42,8 +42,10 @@
     <link<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
     <% } %>
 
+    <% if (!htmlWebpackPlugin.options.devMiddleware) { %>
     <% for (key in htmlWebpackPlugin.files.css) { %>
     <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet">
+    <% } %>
     <% } %>
 
   </head>
@@ -57,7 +59,9 @@
     <% } %>
 
     <% if (htmlWebpackPlugin.options.appMountId) { %>
-    <div id="<%= htmlWebpackPlugin.options.appMountId %>"></div>
+    <div id="<%= htmlWebpackPlugin.options.appMountId %>">
+      <%- app %>
+    </div>
     <% } %>
     <% for (item of htmlWebpackPlugin.options.appMountIds) { %>
     <div id="<%= item %>"></div>
