@@ -67,6 +67,10 @@
     <div id="<%= item %>"></div>
     <% } %>
 
+    <script type="text/javascript">
+      window.__PRELOADED_STATE__ = <%- state %>;
+    </script>
+
     <% if (htmlWebpackPlugin.options.window) { %>
     <script type="text/javascript">
       <% for (key in htmlWebpackPlugin.options.window) { %>
