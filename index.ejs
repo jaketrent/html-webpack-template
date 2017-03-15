@@ -60,7 +60,7 @@
 
     <% if (htmlWebpackPlugin.options.appMountId) { %>
     <div id="<%= htmlWebpackPlugin.options.appMountId %>">
-      <%= "<%= app %" %>>
+      <%= "<%- app %" %>>
     </div>
     <% } %>
     <% for (item of htmlWebpackPlugin.options.appMountIds) { %>
@@ -68,7 +68,7 @@
     <% } %>
 
     <script type="text/javascript">
-      window.__PRELOADED_STATE__ = <%= "<%= state %" %>>;
+      window.__PRELOADED_STATE__ = <%= "<%- state %" %>>;
     </script>
 
     <% if (htmlWebpackPlugin.options.window) { %>
