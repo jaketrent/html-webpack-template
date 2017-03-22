@@ -4,13 +4,16 @@
 <% htmlWebpackPlugin.options.links = htmlWebpackPlugin.options.links || [] %>
 <% htmlWebpackPlugin.options.meta = htmlWebpackPlugin.options.meta || [] %>
 <% htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || [] %>
+<% htmlWebpackPlugin.options.scriptBlocks = htmlWebpackPlugin.options.scriptBlocks || [] %>
+<% htmlWebpackPlugin.options.devMiddleware = htmlWebpackPlugin.options.devMiddleware || false %>
+<% htmlWebpackPlugin.options.useHelmet = htmlWebpackPlugin.options.useHelmet || false %>
 
 <!DOCTYPE html>
-<!--[if lt IE 7 ]>             <html class="ie6" lang="en"<% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
-<!--[if IE 7 ]>                <html class="ie7" lang="en"<% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
-<!--[if IE 8 ]>                <html class="ie8" lang="en"<% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
-<!--[if IE 9 ]>                <html class="ie9" lang="en"<% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"<% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <!--<![endif]-->
+<!--[if lt IE 7 ]>             <html class="ie6" <%= (!htmlWebpackPlugin.options.useHelmet) ? "lang='en'" : "<%- helmet.htmlAttributes.toString() %\>" %><% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
+<!--[if IE 7 ]>                <html class="ie7" <%= (!htmlWebpackPlugin.options.useHelmet) ? "lang='en'" : "<%- helmet.htmlAttributes.toString() %\>" %><% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
+<!--[if IE 8 ]>                <html class="ie8" <%= (!htmlWebpackPlugin.options.useHelmet) ? "lang='en'" : "<%- helmet.htmlAttributes.toString() %\>" %><% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
+<!--[if IE 9 ]>                <html class="ie9" <%= (!htmlWebpackPlugin.options.useHelmet) ? "lang='en'" : "<%- helmet.htmlAttributes.toString() %\>" %><% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html <%= (!htmlWebpackPlugin.options.useHelmet) ? "lang='en'" : "<%- helmet.htmlAttributes.toString() %\>" %><% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
@@ -19,13 +22,20 @@
     <base href="<%= htmlWebpackPlugin.options.baseHref %>">
     <% } %>
 
+    <% if (htmlWebpackPlugin.options.useHelmet) { %>
+    <base href="<%= "<%- helmet.base.toString() %" %>>">
+    <% } %>
+
     <% if (Array.isArray(htmlWebpackPlugin.options.meta)) { %>
       <% for (item of htmlWebpackPlugin.options.meta) { %>
       <meta<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
       <% } %>
     <% } %>
 
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title <%= (!htmlWebpackPlugin.options.useHelmet) ? "" : "<%- helmet.titleAttributes.toString() %\>" %>><%= (!htmlWebpackPlugin.options.useHelmet) ? htmlWebpackPlugin.options.title : "<%- helmet.title.toString() %\>" %></title>
+
+    <%= (!htmlWebpackPlugin.options.useHelmet) ? "" : "<%- helmet.meta.toString() %\>" %>
+    <%= (!htmlWebpackPlugin.options.useHelmet) ? "" : "<%- helmet.link.toString() %\>" %>
 
     <% if (htmlWebpackPlugin.files.favicon) { %>
     <link href="<%= htmlWebpackPlugin.files.favicon %>" rel="shortcut icon">
@@ -37,15 +47,17 @@
 
     <% for (item of htmlWebpackPlugin.options.links) { %>
     <% if (typeof item === 'string' || item instanceof String) { item = { href: item, rel: 'stylesheet' } } %>
-  	<link<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
+    <link<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
     <% } %>
 
+    <% if (!htmlWebpackPlugin.options.devMiddleware) { %>
     <% for (key in htmlWebpackPlugin.files.css) { %>
     <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet">
     <% } %>
+    <% } %>
 
   </head>
-  <body>
+  <body <%= (!htmlWebpackPlugin.options.useHelmet) ? "" : "<%- helmet.bodyAttributes.toString() %\>" %>>
     <% if (htmlWebpackPlugin.options.unsupportedBrowser) { %>
     <style>.unsupported-browser { display: none; }</style>
     <div class="unsupported-browser">
@@ -55,11 +67,17 @@
     <% } %>
 
     <% if (htmlWebpackPlugin.options.appMountId) { %>
-    <div id="<%= htmlWebpackPlugin.options.appMountId %>"></div>
+    <div id="<%= htmlWebpackPlugin.options.appMountId %>">
+      <%= "<%- app %" %>>
+    </div>
     <% } %>
     <% for (item of htmlWebpackPlugin.options.appMountIds) { %>
     <div id="<%= item %>"></div>
     <% } %>
+
+    <script id="__PRELOADED_STATE__" type="text/javascript">
+      window.__PRELOADED_STATE__ = <%= "<%- state %" %>>;
+    </script>
 
     <% if (htmlWebpackPlugin.options.window) { %>
     <script type="text/javascript">
@@ -70,16 +88,18 @@
     <% } %>
 
     <% if (htmlWebpackPlugin.options.inlineManifestWebpackName) { %>
-        <%= htmlWebpackPlugin.files[htmlWebpackPlugin.options.inlineManifestWebpackName] %>
+      <%= htmlWebpackPlugin.files[htmlWebpackPlugin.options.inlineManifestWebpackName] %>
     <% } %>
 
     <% for (item of htmlWebpackPlugin.options.scripts) { %>
     <% if (typeof item === 'string' || item instanceof String) { item = { src: item, type: 'text/javascript' } } %>
-  	<script<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>></script>
+    <script<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>></script>
     <% } %>
 
+    <% if (!htmlWebpackPlugin.options.devMiddleware) { %>
     <% for (key in htmlWebpackPlugin.files.chunks) { %>
     <script src="<%= htmlWebpackPlugin.files.chunks[key].entry %>" type="text/javascript"></script>
+    <% } %>
     <% } %>
 
     <% if (htmlWebpackPlugin.options.devServer) { %>
@@ -99,6 +119,12 @@
       <% } %>
     </script>
     <script async defer src="https://www.google-analytics.com/analytics.js" type="text/javascript"></script>
+    <% } %>
+
+    <% for (item of htmlWebpackPlugin.options.scriptBlocks) { %>
+    <script type="text/javascript">
+      <%= item %>
+    </script>
     <% } %>
   </body>
 </html>
