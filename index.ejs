@@ -6,14 +6,14 @@
 <% htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || [] %>
 <% htmlWebpackPlugin.options.scriptBlocks = htmlWebpackPlugin.options.scriptBlocks || [] %>
 <% htmlWebpackPlugin.options.devMiddleware = htmlWebpackPlugin.options.devMiddleware || false %>
-<% htmlWebpackPlugin.useHelmet = htmlWebpackPlugin.useHelmet || false %>
+<% htmlWebpackPlugin.options.useHelmet = htmlWebpackPlugin.options.useHelmet || false %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7 ]>             <html class="ie6" lang="en"<% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
 <!--[if IE 7 ]>                <html class="ie7" lang="en"<% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
 <!--[if IE 8 ]>                <html class="ie8" lang="en"<% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
 <!--[if IE 9 ]>                <html class="ie9" lang="en"<% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html <%= (!htmlWebpackPlugin.useHelmet) ? "lang='en'" : "<%- helmet.htmlAttributes.toString() %" %><%- htmlWebpackPlugin.useHelmet ? ">" : "" %><% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <!--<![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html <%= (!htmlWebpackPlugin.options.useHelmet) ? "lang='en'" : "<%- helmet.htmlAttributes.toString() %" %><%- htmlWebpackPlugin.options.useHelmet ? ">" : "" %><% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
@@ -22,7 +22,7 @@
     <base href="<%= htmlWebpackPlugin.options.baseHref %>">
     <% } %>
 
-    <% if (htmlWebpackPlugin.useHelmet) { %>
+    <% if (htmlWebpackPlugin.options.useHelmet) { %>
     <base href="<%= "<%- helmet.base.toString() %" %>>">
     <% } %>
 
@@ -32,10 +32,10 @@
       <% } %>
     <% } %>
 
-    <title <%= (!htmlWebpackPlugin.useHelmet) ? "" : "<%- helmet.titleAttributes.toString() %" %><%- htmlWebpackPlugin.useHelmet ? ">" : "" %>><%= (!htmlWebpackPlugin.useHelmet) ? htmlWebpackPlugin.options.title : "<%- helmet.title.toString() %" %><%- htmlWebpackPlugin.useHelmet ? ">" : "" %></title>
+    <title <%= (!htmlWebpackPlugin.options.useHelmet) ? "" : "<%- helmet.titleAttributes.toString() %" %><%- htmlWebpackPlugin.options.useHelmet ? ">" : "" %>><%= (!htmlWebpackPlugin.options.useHelmet) ? htmlWebpackPlugin.options.title : "<%- helmet.title.toString() %" %><%- htmlWebpackPlugin.options.useHelmet ? ">" : "" %></title>
 
-    <%= (!htmlWebpackPlugin.useHelmet) ? "" : "<%- helmet.meta.toString() %" ><%- htmlWebpackPlugin.useHelmet ? ">" : "" %>
-    <%= (!htmlWebpackPlugin.useHelmet) ? "" : "<%- helmet.link.toString() %" ><%- htmlWebpackPlugin.useHelmet ? ">" : "" %>
+    <%= (!htmlWebpackPlugin.options.useHelmet) ? "" : "<%- helmet.meta.toString() %" ><%- htmlWebpackPlugin.options.useHelmet ? ">" : "" %>
+    <%= (!htmlWebpackPlugin.options.useHelmet) ? "" : "<%- helmet.link.toString() %" ><%- htmlWebpackPlugin.options.useHelmet ? ">" : "" %>
 
     <% if (htmlWebpackPlugin.files.favicon) { %>
     <link href="<%= htmlWebpackPlugin.files.favicon %>" rel="shortcut icon">
@@ -57,7 +57,7 @@
     <% } %>
 
   </head>
-  <body <%= (!htmlWebpackPlugin.useHelmet) ? "" : "<%- helmet.bodyAttributes.toString() %" %><%- htmlWebpackPlugin.useHelmet ? ">" : "" %>>
+  <body <%= (!htmlWebpackPlugin.options.useHelmet) ? "" : "<%- helmet.bodyAttributes.toString() %" %><%- htmlWebpackPlugin.options.useHelmet ? ">" : "" %>>
     <% if (htmlWebpackPlugin.options.unsupportedBrowser) { %>
     <style>.unsupported-browser { display: none; }</style>
     <div class="unsupported-browser">
