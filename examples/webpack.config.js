@@ -2,18 +2,14 @@ var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: [
-    './index'
-  ],
+  entry: ['./index'],
   output: {
     path: __dirname + '/dist',
     filename: 'main.js'
   },
   resolveLoader: { root: path.join(__dirname, 'node_modules') },
   module: {
-    loaders: [
-      { test: /\.js$/, loader: 'babel-loader' }
-    ]
+    loaders: [{ test: /\.js$/, loader: 'babel-loader' }]
   },
   devServer: {
     port: 3001
@@ -35,6 +31,7 @@ module.exports = {
         }
       ],
       mobile: true,
+      lang: 'en-US',
       links: [
         'https://fonts.googleapis.com/css?family=Roboto',
         {
