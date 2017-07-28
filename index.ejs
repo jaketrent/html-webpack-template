@@ -32,6 +32,16 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <% } %>
 
+    <% if (htmlWebpackPlugin.options.safari) {%>
+      <% if (htmlWebpackPlugin.options.safari.hideInterface) {%>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <% } %>
+      <% if (htmlWebpackPlugin.options.safari.title) {%>
+      <meta name="apple-mobile-web-app-title" content="<%= htmlWebpackPlugin.options.safari.title %>">
+      <% } %>
+    <% } %>
+
     <% for (item of htmlWebpackPlugin.options.links) { %>
     <% if (typeof item === 'string' || item instanceof String) { item = { href: item, rel: 'stylesheet' } } %>
   	<link<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>

@@ -49,6 +49,8 @@ And some other optional:
   - If an array element is an object, the object's properties and values are used as the attribute names and values,
     respectively.
 - `window`: Object that defines data you need to bootstrap a JavaScript app.
+- `safari.title`: Custom launch icon title for [Mobile Safari](https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html)
+- `safari.hideInterface`: Sets appropriate meta tag to [hide Mobile Safari UI](https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html) when launched from an iOS home screen.
 
 Plus any [html-webpack-plugin config options](https://github.com/ampedandwired/html-webpack-plugin#configuration)
 otherwise available.
@@ -110,6 +112,10 @@ Here's an example webpack config illustrating how to use these options in your `
         env: {
           apiHost: 'http://myapi.com/api/v1'
         }
+      },
+      safari: {
+        title: "Launch My App",
+        hideInterface: true
       }
 
       // And any other config options from html-webpack-plugin:
