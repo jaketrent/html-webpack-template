@@ -22,12 +22,12 @@ $ npm install html-webpack-template --save-dev
 
 ## Basic Usage
 
-There are a couple required parameters:
+To make it work, you need to provide these **required parameters**:
 
-- `inject`: Set to `false`. Controls asset addition to the template. This template takes care of that.
-- `template`: Specify this module's `index.ejs` file.
+- `inject: false`
+- `template: require('html-webpack-template')`
 
-And some other optional:
+And you can provide some other *optional parameters*:
 - `appMountId`: The `<div>` element id on which you plan to mount a JavaScript app.
 - `appMountIds`: An array of application element ids.
 - `baseHref`: Adjust the URL for relative URLs in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base)).
