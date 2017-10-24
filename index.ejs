@@ -38,7 +38,15 @@
     <% } %>
 
     <% for (key in htmlWebpackPlugin.files.css) { %>
+    <% if (htmlWebpackPlugin.files.cssIntegrity) { %>
+    <link
+      href="<%= htmlWebpackPlugin.files.css[key] %>"
+      rel="stylesheet"
+      integrity="<%= htmlWebpackPlugin.files.cssIntegrity[key] %>"
+      crossorigin="<%= webpackConfig.output.crossOriginLoading %>">
+    <% } else { %>
     <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet">
+    <% } %>
     <% } %>
 
   </head>
@@ -76,7 +84,15 @@
     <% } %>
 
     <% for (key in htmlWebpackPlugin.files.chunks) { %>
+    <% if (htmlWebpackPlugin.files.jsIntegrity) { %>
+    <script
+      src="<%= htmlWebpackPlugin.files.chunks[key].entry %>"
+      type="text/javascript"
+      integrity="<%= htmlWebpackPlugin.files.jsIntegrity[htmlWebpackPlugin.files.js.indexOf(htmlWebpackPlugin.files.chunks[key].entry)] %>"
+      crossorigin="<%= webpackConfig.output.crossOriginLoading %>"></script>
+    <% } else { %>
     <script src="<%= htmlWebpackPlugin.files.chunks[key].entry %>" type="text/javascript"></script>
+    <% } %>
     <% } %>
 
     <% if (htmlWebpackPlugin.options.devServer) { %>
