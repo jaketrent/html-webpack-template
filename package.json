@@ -4,9 +4,7 @@
   "description": "A template with more features than the default html-webpack-plugin template",
   "main": "index.js",
   "scripts": {
-    "commit": "git-cz",
-    "test": "echo \"Everything is fine.  No tests here.\" && exit 0",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "test": "echo \"Everything is fine.  No tests here.\" && exit 0"
   },
   "repository": {
     "type": "git",
@@ -29,11 +27,6 @@
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
-  },
-  "devDependencies": {
-    "commitizen": "^2.4.6",
-    "cz-conventional-changelog": "^1.1.5",
-    "semantic-release": "^4.3.5"
   },
   "peerDependencies": {
     "html-webpack-plugin": "2.x"
