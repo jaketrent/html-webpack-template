@@ -29,6 +29,7 @@ To make it work, you need to provide these **required parameters**:
 
 And you can provide some other *optional parameters*:
 - `appMountId`: The `<div>` element id on which you plan to mount a JavaScript app.
+- `appMountHtmlSnippet`: A small snippet of HTML that will be inserted in the `<div>` element the appMountId is attached to. 
 - `appMountIds`: An array of application element ids.
 - `baseHref`: Adjust the URL for relative URLs in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base)).
 - `devServer`: Insert the webpack-dev-server hot reload script at this host:port/path; e.g., http://localhost:3000.
@@ -49,6 +50,8 @@ And you can provide some other *optional parameters*:
   - If an array element is an object, the object's properties and values are used as the attribute names and values,
     respectively.
 - `window`: Object that defines data you need to bootstrap a JavaScript app.
+- `headHtmlSnippet`: A small snippet of HTML that will be inserted in the head element. 
+- `bodyHtmlSnippet`: A small snippet of HTML that will be inserted in the body element. 
 
 Plus any [html-webpack-plugin config options](https://github.com/ampedandwired/html-webpack-plugin#configuration)
 otherwise available.
@@ -69,6 +72,9 @@ Here's an example webpack config illustrating how to use these options in your `
 
       // Optional
       appMountId: 'app',
+      appMountHtmlSnippet: '<div class="app-spinner"><i class="fa fa-spinner fa-spin fa-5x" aria-hidden="true"></i></div>',
+      headHtmlSnippet: '<style>div.app-spinner {position: fixed;top:50%;left:50%;}</style >',
+      bodyHtmlSnippet: '<custom-element></custom-element>',
       baseHref: 'http://example.com/awesome',
       devServer: 'http://localhost:3001',
       googleAnalytics: {
