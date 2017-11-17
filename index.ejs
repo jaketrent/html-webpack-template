@@ -48,7 +48,9 @@
     <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet">
     <% } %>
     <% } %>
-
+    <% if (htmlWebpackPlugin.options.headHtmlSnippet) { %>
+      <%= htmlWebpackPlugin.options.headHtmlSnippet %>
+    <% } %>
   </head>
   <body>
     <% if (htmlWebpackPlugin.options.unsupportedBrowser) { %>
@@ -58,9 +60,17 @@
       site. See <a href="http://outdatedbrowser.com/">outdatedbrowser.com</a> for options.
     </div>
     <% } %>
-
+    <% if (htmlWebpackPlugin.options.bodyHtmlSnippet) { %>
+      <%= htmlWebpackPlugin.options.bodyHtmlSnippet %>
+    <% } %>
     <% if (htmlWebpackPlugin.options.appMountId) { %>
-    <div id="<%= htmlWebpackPlugin.options.appMountId %>"></div>
+    <div id="<%= htmlWebpackPlugin.options.appMountId %>">	
+	
+		<% if (htmlWebpackPlugin.options.appMountHtmlSnippet) { %>
+		  <%= htmlWebpackPlugin.options.appMountHtmlSnippet %>
+		<% } %>
+	
+	</div>
     <% } %>
     <% for (item of htmlWebpackPlugin.options.appMountIds) { %>
     <div id="<%= item %>"></div>
