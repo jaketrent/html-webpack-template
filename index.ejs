@@ -5,6 +5,7 @@
 <% htmlWebpackPlugin.options.links = htmlWebpackPlugin.options.links || [] %>
 <% htmlWebpackPlugin.options.meta = htmlWebpackPlugin.options.meta || [] %>
 <% htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || [] %>
+<% linkCloseTag = htmlWebpackPlugin.options.xhtml ? "/>" : ">" %>
 
 <!DOCTYPE html>
 <html lang="<%= htmlWebpackPlugin.options.lang %>" <% if (htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>>
@@ -25,7 +26,7 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
 
     <% if (htmlWebpackPlugin.files.favicon) { %>
-    <link href="<%= htmlWebpackPlugin.files.favicon %>" rel="shortcut icon">
+    <link href="<%= htmlWebpackPlugin.files.favicon %>" rel="shortcut icon"<%= linkCloseTag %>
     <% } %>
 
     <% if (htmlWebpackPlugin.options.mobile) { %>
@@ -34,7 +35,7 @@
 
     <% for (item of htmlWebpackPlugin.options.links) { %>
     <% if (typeof item === 'string' || item instanceof String) { item = { href: item, rel: 'stylesheet' } } %>
-  	<link<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
+  	<link<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %><%= linkCloseTag %>
     <% } %>
 
     <% for (key in htmlWebpackPlugin.files.css) { %>
@@ -43,9 +44,9 @@
       href="<%= htmlWebpackPlugin.files.css[key] %>"
       rel="stylesheet"
       integrity="<%= htmlWebpackPlugin.files.cssIntegrity[key] %>"
-      crossorigin="<%= webpackConfig.output.crossOriginLoading %>">
+      crossorigin="<%= webpackConfig.output.crossOriginLoading %>"<%= linkCloseTag %>
     <% } else { %>
-    <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet">
+    <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet"<%= linkCloseTag %>
     <% } %>
     <% } %>
     <% if (htmlWebpackPlugin.options.headHtmlSnippet) { %>
@@ -64,12 +65,10 @@
       <%= htmlWebpackPlugin.options.bodyHtmlSnippet %>
     <% } %>
     <% if (htmlWebpackPlugin.options.appMountId) { %>
-    <div id="<%= htmlWebpackPlugin.options.appMountId %>">	
-	
+    <div id="<%= htmlWebpackPlugin.options.appMountId %>">
 		<% if (htmlWebpackPlugin.options.appMountHtmlSnippet) { %>
 		  <%= htmlWebpackPlugin.options.appMountHtmlSnippet %>
 		<% } %>
-	
 	</div>
     <% } %>
     <% for (item of htmlWebpackPlugin.options.appMountIds) { %>
