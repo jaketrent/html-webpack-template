@@ -35,6 +35,8 @@ And you can provide some other *optional parameters*:
 - `devServer`: Insert the webpack-dev-server hot reload script at this host:port/path; e.g., http://localhost:3000.
 - `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
+- `googleTagManager.containerId`: Container ID for use with [Google Tag Manager](https://www.google.com/analytics/tag-manager/).
+- `googleTagManager.dataLayerName`: A custom name to be used for the Google Tag Manager [dataLayer](https://developers.google.com/tag-manager/devguide). Defaults to 'dataLayer'. 
 - `lang`: String identifying your content language
 - `links`: Array of `<link>` elements.
   - If an array element is a string, the value is assigned to the `href` attribute and the `rel` attribute is set to

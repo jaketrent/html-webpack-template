@@ -24,6 +24,19 @@
 
     <title><%= htmlWebpackPlugin.options.title %></title>
 
+    <% if (htmlWebpackPlugin.options.googleTagManager) {
+         if (!htmlWebpackPlugin.options.googleTagManager.containerId) {
+           throw new Error("html-webpack-template requires googleTagManager.containerId config");
+         } %>
+    <script type="text/javascript">
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','<%= htmlWebpackPlugin.options.googleTagManager.dataLayerName || "dataLayer" %>', '<%= htmlWebpackPlugin.options.googleTagManager.containerId %>');
+    </script>
+    <% } %>
+
     <% if (htmlWebpackPlugin.files.favicon) { %>
     <link href="<%= htmlWebpackPlugin.files.favicon %>" rel="shortcut icon">
     <% } %>
@@ -53,6 +66,11 @@
     <% } %>
   </head>
   <body>
+    <% if (htmlWebpackPlugin.options.googleTagManager) { %>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= htmlWebpackPlugin.options.googleTagManager.containerId %>"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <% } %>
+
     <% if (htmlWebpackPlugin.options.unsupportedBrowser) { %>
     <style>.unsupported-browser { display: none; }</style>
     <div class="unsupported-browser">
