@@ -40,7 +40,7 @@
       <%_ } _%>
     <%_ } _%>
     <%_ if (htmlWebpackPlugin.options.headHtmlSnippet) { _%>
-    <%= htmlWebpackPlugin.options.headHtmlSnippet %>
+    <%- htmlWebpackPlugin.options.headHtmlSnippet %>
     <%_ } _%>
   </head>
   <body>
@@ -52,12 +52,12 @@
     </div>
     <%_ } _%>
     <%_ if (htmlWebpackPlugin.options.bodyHtmlSnippet) { _%>
-    <%= htmlWebpackPlugin.options.bodyHtmlSnippet %>
+    <%- htmlWebpackPlugin.options.bodyHtmlSnippet %>
     <%_ } _%>
     <%_ if (htmlWebpackPlugin.options.appMountId) { _%>
     <div id="<%= htmlWebpackPlugin.options.appMountId %>">
       <%_ if (htmlWebpackPlugin.options.appMountHtmlSnippet) { _%>
-      <%= htmlWebpackPlugin.options.appMountHtmlSnippet %>
+      <%- htmlWebpackPlugin.options.appMountHtmlSnippet %>
       <%_ } _%>
     </div>
     <%_ } _%>
@@ -67,7 +67,7 @@
     <%_ if (htmlWebpackPlugin.options.window) { _%>
     <script type="text/javascript">
       <%_ for (key in htmlWebpackPlugin.options.window) { _%>
-      window['<%= key %>'] = <%= JSON.stringify(htmlWebpackPlugin.options.window[key]) %>;
+      window['<%= key %>'] = <%- JSON.stringify(htmlWebpackPlugin.options.window[key]) %>;
       <%_ } _%>
     </script>
     <%_ } _%>
