@@ -29,6 +29,6 @@
     }
   },
   "peerDependencies": {
-    "html-webpack-plugin": "2.x"
+    "html-webpack-plugin": "2.x || ^3"
   }
 }
