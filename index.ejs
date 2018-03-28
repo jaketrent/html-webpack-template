@@ -24,7 +24,7 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
     <title><%= htmlWebpackPlugin.options.title %></title><%
 
     if (htmlWebpackPlugin.files.favicon) { %>
-    <link href="<%= htmlWebpackPlugin.files.favicon %>" rel="shortcut icon"><%
+    <link href="<%= htmlWebpackPlugin.files.favicon %>" rel="shortcut icon" /><%
     } %><%
 
     if (htmlWebpackPlugin.options.mobile) { %>
@@ -33,7 +33,7 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
 
     for (item of htmlWebpackPlugin.options.links) { %><%
       if (typeof item === 'string' || item instanceof String) { item = { href: item, rel: 'stylesheet' } } %>
-    <link<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>><%
+    <link<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %> /><%
     } %><%
 
     for (key in htmlWebpackPlugin.files.css) { %><%
@@ -42,9 +42,9 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
       href="<%= htmlWebpackPlugin.files.css[key] %>"
       rel="stylesheet"
       integrity="<%= htmlWebpackPlugin.files.cssIntegrity[key] %>"
-      crossorigin="<%= webpackConfig.output.crossOriginLoading %>"><%
+      crossorigin="<%= webpackConfig.output.crossOriginLoading %>" /><%
       } else { %>
-    <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet"><%
+    <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet" /><%
       } %><%
     } %><%
     if (htmlWebpackPlugin.options.headHtmlSnippet) { %>
