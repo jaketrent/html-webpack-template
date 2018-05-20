@@ -1,7 +1,7 @@
 # HTML Webpack Template
 
 This is a template for the [webpack](http://webpack.github.io/) plugin [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin).
-It has a few extra features than the [default template](https://github.com/jantimon/html-webpack-plugin/blob/master/default_index.ejs)
+It has a few extra features more than the [default template](https://github.com/jantimon/html-webpack-plugin/blob/master/default_index.ejs)
 which will hopefully make it less likely that you'll have to create your own `index.html` file in your webpack project.
 
 Templates for the html-webpack-plugin are implemented using [underscore templates](http://underscorejs.org/#template)
