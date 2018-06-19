@@ -34,7 +34,7 @@ And you can provide some other *optional parameters*:
 - `baseHref`: Adjust the URL for relative URLs in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base)).
 - `devServer`: Insert the webpack-dev-server hot reload script at this host:port/path; e.g., http://localhost:3000.
 - `googleAnalytics.trackingId`: Track usage of your site via [Google Analytics](http://analytics.google.com).
-- `googleAnalytics.anonymizeIp`: Anonymize tracking of IP statistics [IP Anonymization in Analytics](https://support.google.com/analytics/answer/2763052).
+- `googleAnalytics.anonymizeIp`: Anonymize tracking of IP statistics ([IP Anonymization in Analytics](https://support.google.com/analytics/answer/2763052)).
 - `googleAnalytics.pageViewOnLoad`: Log a `pageview` event after the analytics code loads.
 - `lang`: String identifying your content language
 - `links`: Array of `<link>` elements.
