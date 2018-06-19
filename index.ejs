@@ -118,8 +118,8 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
       } else { throw new Error("html-webpack-template requires googleAnalytics.trackingId config"); } %><%
 
       if (htmlWebpackPlugin.options.googleAnalytics.anonymizeIp) { %>
-      ga('set', 'anonymizeIp', true);<%
-      } %>
+      ga('set','anonymizeIp',true);<%
+      } %><%
 
       if (htmlWebpackPlugin.options.googleAnalytics.pageViewOnLoad) { %>
       ga('send','pageview');<%
