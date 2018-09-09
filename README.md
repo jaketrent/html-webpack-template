@@ -53,7 +53,7 @@ And you can provide some other *optional parameters*:
 - `headHtmlSnippet`: A small snippet of HTML that will be inserted in the head element. 
 - `bodyHtmlSnippet`: A small snippet of HTML that will be inserted in the body element. 
 
-Plus any [html-webpack-plugin config options](https://github.com/ampedandwired/html-webpack-plugin#configuration)
+Plus any [html-webpack-plugin config options](https://github.com/jantimon/html-webpack-plugin#options)
 otherwise available.
 
 ### Example
