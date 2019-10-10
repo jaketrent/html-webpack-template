@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Everything is fine.  No tests here.\" && exit 0"
   },
+  "files": [
+    "index.ejs"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jaketrent/html-webpack-template.git"
