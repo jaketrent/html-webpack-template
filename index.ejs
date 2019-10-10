@@ -14,6 +14,11 @@ const window = options.window;
 const googleAnalytics = options.googleAnalytics;
 
 const isString = arg => typeof arg === 'string';
+const toAttributes = obj => {
+  return Object.entries(obj)
+    .map(([key, value]) => ` ${key}="${value}"`)
+    .join('');
+}
 
 let appMountId = options.appMountId;
 if (appMountIds.length <= 0) appMountId = appMountId || 'app';
@@ -40,7 +45,7 @@ const scripts = (options.scripts || []).map(script => {
   <meta content="width=device-width, initial-scale=1" name="viewport"><%
   } %><%
   for (let link of links) { %>
-  <link<% for (let [key, value] of Object.entries(link)) { %> <%= key %>="<%= value %>"<% } %>/><%
+  <link<%= toAttributes(link) %>/><%
   } %><%
   if (headHtmlSnippet) { %>
   <%= headHtmlSnippet %><%
@@ -74,7 +79,7 @@ const scripts = (options.scripts || []).map(script => {
   </script><%
   } %><%
   for (let script of scripts) { %>
-  <script<% for (let [key, value] of Object.entries(script)) { %> <%= key %>="<%= value %>"<% } %>></script><%
+  <script<%= toAttributes(script) %>></script><%
   } %><%
   if (googleAnalytics) { %>
   <script type="text/javascript">
