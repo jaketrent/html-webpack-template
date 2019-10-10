@@ -25,10 +25,13 @@
   "homepage": "https://github.com/jaketrent/html-webpack-template",
   "config": {
     "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
+      "path": "cz-conventional-changelog"
     }
   },
   "peerDependencies": {
     "html-webpack-plugin": "2.x || ^3"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.0.2"
   }
 }
