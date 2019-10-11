@@ -40,6 +40,7 @@ function compile (config = {}) {
 describe('HtmlWebpackTemplate', () => {
   it('should be used by HtmlWebpackPlugin', async () => {
     const html = await compile();
+    expect(html).toMatch(/<div id="app">/);
     expect(html).toMatch(/<script type="text\/javascript" src="app\.bundle\.js">/);
   });
 
@@ -70,7 +71,7 @@ describe('HtmlWebpackTemplate', () => {
     };
     const html = await compile(config);
     expect(html).toContain('UA-XXXX-XX');
-    expect(html).toMatch(/ga\('send','pageview'\);/);
+    expect(html).toContain("ga('send','pageview');");
   });
 
   it('should be able to set title tag', async () => {

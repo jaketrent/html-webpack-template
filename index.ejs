@@ -86,7 +86,7 @@ const scripts = (options.scripts || []).map(script => {
     window.GoogleAnalyticsObject='ga';window.ga=function(){ga.q.push(arguments);};ga.q=[];ga.l=+new Date;<%
     if (googleAnalytics.trackingId) { %>
     ga('create','<%= googleAnalytics.trackingId %>','auto');<%
-    } else { throw new Error("html-webpack-template requires googleAnalytics.trackingId config"); } %><%
+    } else { throw new Error('html-webpack-template requires googleAnalytics.trackingId config'); } %><%
     if (googleAnalytics.pageViewOnLoad) { %>
     ga('send','pageview');<%
     } %>
