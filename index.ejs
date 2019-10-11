@@ -1,6 +1,7 @@
 <%
 const { options } = htmlWebpackPlugin;
 
+const xhtml = options.xhtml;
 const lang = options.lang || 'en';
 const title = options.title;
 const description = options.description;
@@ -45,7 +46,7 @@ const scripts = (options.scripts || []).map(script => {
   <meta content="width=device-width, initial-scale=1" name="viewport"><%
   } %><%
   for (let link of links) { %>
-  <link<%= toAttributes(link) %>/><%
+  <link<%= toAttributes(link) %><% if (xhtml) { %>/<% } %>><%
   } %><%
   if (headHtmlSnippet) { %>
   <%= headHtmlSnippet %><%

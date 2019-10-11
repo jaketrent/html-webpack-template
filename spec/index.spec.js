@@ -124,6 +124,30 @@ describe('HtmlWebpackTemplate', () => {
       ]
     };
     const html = await compile(config);
+    expect(html).toMatch(/<link href="https:\/\/fonts\.googleapis\.com\/css\?family=Roboto" rel="stylesheet">/);
+    expect(html).toMatch(/<link href="\/apple-touch-icon\.png" rel="apple-touch-icon" sizes="180x180">/);
+    expect(html).toMatch(/<link href="\/favicon-32x32\.png" rel="icon" sizes="32x32" type="image\/png">/);
+  });
+
+  it('should be able to add xhtml compliant link tags', async () => {
+    const config = {
+      xhtml: true,
+      links: [
+        'https://fonts.googleapis.com/css?family=Roboto',
+        {
+          href: '/apple-touch-icon.png',
+          rel: 'apple-touch-icon',
+          sizes: '180x180'
+        },
+        {
+          href: '/favicon-32x32.png',
+          rel: 'icon',
+          sizes: '32x32',
+          type: 'image/png'
+        }
+      ]
+    };
+    const html = await compile(config);
     expect(html).toMatch(/<link href="https:\/\/fonts\.googleapis\.com\/css\?family=Roboto" rel="stylesheet"\/>/);
     expect(html).toMatch(/<link href="\/apple-touch-icon\.png" rel="apple-touch-icon" sizes="180x180"\/>/);
     expect(html).toMatch(/<link href="\/favicon-32x32\.png" rel="icon" sizes="32x32" type="image\/png"\/>/);
