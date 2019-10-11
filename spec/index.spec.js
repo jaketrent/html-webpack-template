@@ -200,5 +200,6 @@ describe('HtmlWebpackTemplate', () => {
     };
     const html = await compile(config);
     expect(html).toMatch(/<div class="unsupported-browser">/);
+    expect(html).toMatch(/<a href="https:\/\/bestvpn\.org\/outdatedbrowser\/" rel="noopener noreferrer">/);
   });
 });
