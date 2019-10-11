@@ -1,35 +1,32 @@
-var path = require('path')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+'use strict';
 
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+/** @type {import('webpack').Configuration} */
 module.exports = {
-  entry: ['./index'],
+  entry: './index',
   output: {
-    path: __dirname + '/dist',
+    path: path.join(__dirname, '/dist'),
     filename: 'main.js'
   },
-  resolveLoader: { root: path.join(__dirname, 'node_modules') },
   module: {
-    loaders: [{ test: /\.js$/, loader: 'babel-loader' }]
+    rules: [{ test: /\.js$/, loader: 'babel-loader' }]
   },
   devServer: {
     port: 3001
   },
   plugins: [
     new HtmlWebpackPlugin({
-      inject: false,
-      template: '../index.ejs',
-      appMountId: 'app',
-      devServer: 'http://localhost:3001',
+      template: require('..'),
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
       },
-      meta: [
-        {
-          name: 'description',
-          content: 'A better default template for html-webpack-plugin.'
-        }
-      ],
+      meta: {
+        name: 'description',
+        content: 'A better default template for html-webpack-plugin.'
+      },
       mobile: true,
       lang: 'en-US',
       links: [
@@ -61,4 +58,4 @@ module.exports = {
       }
     })
   ]
-}
+};
