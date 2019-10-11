@@ -1,118 +1,112 @@
 /* eslint-env jest */
 'use strict';
 
-const path = require('path');
-const fs = require('fs');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackTemplate = require('../index');
+const MemoryFs = require('memory-fs');
+const path = require('path');
+const webpack = require('webpack');
 
-const OUTPUT_DIR = path.resolve(__dirname, 'dist/');
+jest.setTimeout(10000 /* ms */);
 
-jest.setTimeout(30000);
-process.on('unhandledRejection', r => console.log(r));
-process.traceDeprecation = true;
-
-function testHtmlTemplate(htmlPluginConfiguration, expectedResults, done) {
+function compile (config = {}) {
+  /** @type {import('webpack').Configuration} */
   const webpackConfig = {
     mode: 'production',
     entry: {
       app: path.join(__dirname, 'fixtures/index.js')
     },
     output: {
-      path: OUTPUT_DIR,
-      filename: '[name]_bundle.js'
+      path: '/dist',
+      filename: '[name].bundle.js'
     },
-    plugins: [new HtmlWebpackPlugin(htmlPluginConfiguration)]
+    plugins: [
+      new HtmlWebpackPlugin({
+        ...config,
+        template: require('..')
+      })
+    ]
   };
 
-  webpack(webpackConfig, (err) => {
-    expect(err).toBeFalsy();
-    const dist = path.join(OUTPUT_DIR, 'index.html');
-    const htmlContent = fs.readFileSync(dist).toString();
-    for (let i = 0; i < expectedResults.length; i++) {
-      const expectedResult = expectedResults[i];
-      expect(htmlContent).toContain(expectedResult);
-    }
-    done();
+  const compiler = webpack(webpackConfig);
+  const fs = compiler.outputFileSystem = new MemoryFs();
+  return new Promise((resolve, reject) => {
+    compiler.run(err => {
+      if (err) return reject(err);
+      resolve(fs.readFileSync('/dist/index.html', 'utf-8'));
+    });
   });
 }
 
 describe('HtmlWebpackTemplate', () => {
-  it('should be used by HtmlWebpackPlugin', done => {
-    testHtmlTemplate({
-      template: HtmlWebpackTemplate
-    },
-    ['app_bundle.js'], done);
+  it('should be used by HtmlWebpackPlugin', async () => {
+    const html = await compile();
+    expect(html).toMatch(/<script type="text\/javascript" src="app\.bundle\.js">/);
   });
 
-  it('should be able set custom appMountId', done => {
+  it('should be able to set custom appMountId', async () => {
     const config = {
-      template: HtmlWebpackTemplate,
       appMountId: 'customAppId'
     };
-    testHtmlTemplate(config, ['customAppId'], done);
+    const html = await compile(config);
+    expect(html).toMatch(/<div id="customAppId">/);
   });
 
-  it('should be able set several appMountIds', done => {
+  it('should be able to set several appMountIds', async () => {
     const config = {
-      template: HtmlWebpackTemplate,
-      appMountId: ['customAppId', 'customAppId2', 'customAppId3']
-    }
-    testHtmlTemplate(config, ['customAppId', 'customAppId2', 'customAppId3'], done);
+      appMountIds: ['customAppId', 'customAppId2', 'customAppId3']
+    };
+    const html = await compile(config);
+    expect(html).toMatch(/<div id="customAppId">/);
+    expect(html).toMatch(/<div id="customAppId2">/);
+    expect(html).toMatch(/<div id="customAppId3">/);
   });
 
-
-  it('should be able to set Google Analytics', done => {
+  it('should be able to setup Google Analytics', async () => {
     const config = {
-      template: HtmlWebpackTemplate,
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
         pageViewOnLoad: true
-      },
+      }
     };
-    testHtmlTemplate(config, ['UA-XXXX-XX', 'ga(\'send\',\'pageview\')'], done);
+    const html = await compile(config);
+    expect(html).toContain('UA-XXXX-XX');
+    expect(html).toMatch(/ga\('send','pageview'\);/);
   });
 
-  it('should be able to title tag', done => {
+  it('should be able to set title tag', async () => {
     const config = {
-      template: HtmlWebpackTemplate,
       title: 'All the things'
     };
-    testHtmlTemplate(config, ['All the things'], done);
+    const html = await compile(config);
+    expect(html).toMatch(/<title>All the things<\/title>/);
   });
 
-  it('should be able to set lang', done => {
+  it('should be able to set language', async () => {
     const config = {
-      template: HtmlWebpackTemplate,
       lang: 'hr_HR'
     };
-    testHtmlTemplate(config, ['hr_HR'], done);
+    const html = await compile(config);
+    expect(html).toMatch(/<html lang="hr_HR">/);
   });
 
-  it('should be able to set mobile meta tag', done => {
+  it('should be able to set mobile viewport', async () => {
     const config = {
-      template: HtmlWebpackTemplate,
       mobile: true
     };
-    testHtmlTemplate(config, ['width=device-width'], done);
+    const html = await compile(config);
+    expect(html).toMatch(/<meta content="width=device-width, initial-scale=1" name="viewport">/);
   });
 
-
-  it('should be able to set meta tags', done => {
+  it('should be able to set description', async () => {
     const config = {
-      template: HtmlWebpackTemplate,
-      meta: [{
-        name: 'description',
-        content: 'Describe'
-      }],
+      description: 'Description goes here'
     };
-    testHtmlTemplate(config, ['description', 'Describe'], done);
+    const html = await compile(config);
+    expect(html).toMatch(/<meta name="description" content="Description goes here">/);
   });
 
-  it('should be able to set link tags', done => {
+  it('should be able to add link tags', async () => {
     const config = {
-      template: HtmlWebpackTemplate,
       links: [
         'https://fonts.googleapis.com/css?family=Roboto',
         {
@@ -128,51 +122,58 @@ describe('HtmlWebpackTemplate', () => {
         }
       ]
     };
-    testHtmlTemplate(config, ['Roboto', 'favicon-32x32.png', 'apple-touch-icon'], done);
+    const html = await compile(config);
+    expect(html).toMatch(/<link href="https:\/\/fonts\.googleapis\.com\/css\?family=Roboto" rel="stylesheet"\/>/);
+    expect(html).toMatch(/<link href="\/apple-touch-icon\.png" rel="apple-touch-icon" sizes="180x180"\/>/);
+    expect(html).toMatch(/<link href="\/favicon-32x32\.png" rel="icon" sizes="32x32" type="image\/png"\/>/);
   });
 
-  it('should be able to set script tags', done => {
+  it('should be able to add script tags', async () => {
     const config = {
-      template: HtmlWebpackTemplate,
       scripts: [
         'http://example.com/somescript.js',
         {
           src: '/myModule.js',
           type: 'module'
         }
-      ],
+      ]
     };
-    testHtmlTemplate(config, ['somescript', 'myModule'], done);
+    const html = await compile(config);
+    expect(html).toMatch(/<script src="http:\/\/example\.com\/somescript\.js" type="text\/javascript">/);
+    expect(html).toMatch(/<script src="\/myModule\.js" type="module">/);
   });
 
-  it('should be able to set window properties', done => {
+  it('should be able to set window properties', async () => {
     const config = {
-      template: HtmlWebpackTemplate,
       window: {
         env: {
           apiHost: 'http://myapi.com/api/v1'
         }
       }
     };
-    testHtmlTemplate(config, ['env', 'http://myapi.com/api/v1'], done);
+    const html = await compile(config);
+    expect(html).toContain('window[\'env\'] = {"apiHost":"http://myapi.com/api/v1"};');
   });
 
-  it('should be able to set html snippets', done => {
+  it('should be able to add html snippets', async () => {
     const config = {
-      template: HtmlWebpackTemplate,
-      appMountId: "customAppId",
-      headHtmlSnippet: '<span class="head-html" />',
-      bodyHtmlSnippet: '<span class="body-html" />',
-      appMountHtmlSnippet: '<span class="app-html" />'
-    }
-    testHtmlTemplate(config, ['head-html', 'body-html', 'app-html'], done);
+      appMountId: 'customAppId',
+      headHtmlSnippet: '<span class="head-html"></span>',
+      bodyHtmlSnippet: '<span class="body-html"></span>',
+      appMountHtmlSnippet: '<span class="app-html"></span>'
+    };
+    const html = await compile(config);
+    expect(html).toMatch(/<div id="customAppId">/);
+    expect(html).toMatch(/<span class="head-html"><\/span>/);
+    expect(html).toMatch(/<span class="body-html"><\/span>/);
+    expect(html).toMatch(/<span class="app-html"><\/span>/);
   });
 
-  it('should be able to set warning about unsupported browsers', done => {
+  it('should be able to include warning about unsupported browsers', async () => {
     const config = {
-      template: HtmlWebpackTemplate,
-      unsupportedBrowser: true,
-    }
-    testHtmlTemplate(config, ['Sorry, your browser is not supported.'], done);
+      unsupportedBrowser: true
+    };
+    const html = await compile(config);
+    expect(html).toMatch(/<div class="unsupported-browser">/);
   });
-})
+});
