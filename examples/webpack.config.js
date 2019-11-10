@@ -14,7 +14,8 @@ module.exports = {
     rules: [{ test: /\.js$/, loader: 'babel-loader' }]
   },
   devServer: {
-    port: 3001
+    port: 3001,
+    stats: 'errors-warnings'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -44,16 +45,13 @@ module.exports = {
         }
       ],
       scripts: [
-        'http://example.com/somescript.js',
-        {
-          src: '/myModule.js',
-          type: 'module'
-        }
+        'https://example.com/somescript.js',
+        { src: '/myModule.js', type: 'module' }
       ],
       title: 'My App',
       window: {
         env: {
-          apiHost: 'http://myapi.com/api/v1'
+          apiHost: 'https://myapi.com/api/v1'
         }
       }
     })
