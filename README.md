@@ -1,5 +1,9 @@
 # HTML Webpack Template
 
+
+**Note** - Support for this template is lagging Webpack. This currently only supports (old!) webpack v3. I'm [looking for contributors](https://github.com/jaketrent/html-webpack-template/issues/84) who would like to give it some loving upgrades.
+
+
 This is a template for the [webpack](http://webpack.github.io/) plugin [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin).
 It has a few extra features more than the [default template](https://github.com/jantimon/html-webpack-plugin/blob/master/default_index.ejs)
 which will hopefully make it less likely that you'll have to create your own `index.html` file in your webpack project.
