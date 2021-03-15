@@ -1,7 +1,7 @@
 # HTML Webpack Template
 
 
-**Note** - Support for this template is lagging Webpack. This currently only supports (old!) webpack v3. I'm [looking for contributors](https://github.com/jaketrent/html-webpack-template/issues/84) who would like to give it some loving upgrades.
+**Note** - Support for this template is lagging Webpack. This currently only supports (old!) html-webpack-plugin v3. I'm [looking for contributors](https://github.com/jaketrent/html-webpack-template/issues/84) who would like to give it some loving upgrades.
 
 
 This is a template for the [webpack](http://webpack.github.io/) plugin [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin).
