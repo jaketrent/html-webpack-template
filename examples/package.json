@@ -1,17 +1,16 @@
 {
+  "private": true,
   "name": "examples",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "build": "NODE_ENV=production webpack --mode production"
   },
   "devDependencies": {
-    "babel-core": "^6.4.0",
-    "babel-loader": "^6.2.1",
-    "babel-preset-es2015": "^6.3.13",
-    "html-webpack-plugin": "^2.3.0",
-    "webpack": "^1.12.10",
-    "webpack-dev-server": "^1.14.0"
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   }
 }
