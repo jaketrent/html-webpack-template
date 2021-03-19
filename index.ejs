@@ -65,7 +65,11 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
     } %><%
 
     if (htmlWebpackPlugin.options.appMountId) { %>
-    <div id="<%= htmlWebpackPlugin.options.appMountId %>"><%
+    <div id="<%= htmlWebpackPlugin.options.appMountId %>" <%
+      if (htmlWebpackPlugin.options.appMountAttrs) { %>
+        <%= htmlWebpackPlugin.options.appMountAttrs %>
+      <% } %>
+    > <%
       if (htmlWebpackPlugin.options.appMountHtmlSnippet) { %>
     <%= htmlWebpackPlugin.options.appMountHtmlSnippet %><%
       } %>

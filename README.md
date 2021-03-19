@@ -33,6 +33,9 @@ To make it work, you need to provide these **required parameters**:
 
 And you can provide some other *optional parameters*:
 - `appMountId`: The `<div>` element id on which you plan to mount a JavaScript app.
+- `appMountAttrs`: The `<div>` element other attributes that you want to add 
+  (eg `aria-hidden="true"` to solve [ayy1 errors](https://dequeuniversity.com/rules/axe/3.5/region)).
+  Note that appMountId is required.
 - `appMountHtmlSnippet`: A small snippet of HTML that will be inserted in the `<div>` element the appMountId is attached to. 
 - `appMountIds`: An array of application element ids.
 - `baseHref`: Adjust the URL for relative URLs in the document ([MDN](https://developer.mozilla.org/en/docs/Web/HTML/Element/base)).

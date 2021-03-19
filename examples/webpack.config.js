@@ -19,6 +19,7 @@ module.exports = {
       inject: false,
       template: '../index.ejs',
       appMountId: 'app',
+      appMountAttrs: 'aria-hidden="true"',
       devServer: 'http://localhost:3001',
       googleAnalytics: {
         trackingId: 'UA-XXXX-XX',
